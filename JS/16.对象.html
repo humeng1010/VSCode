@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建对象</title>
+    <script>
+        var obj = {
+            uname: '张三',
+            age: 18,
+            gender: '男',
+            sayHi: function(){
+                console.log("hi~");
+            }
+        }
+        
+        console.log(obj.uname);
+        console.log(obj["age"]);
+        obj.sayHi();
+
+        var dog = {
+            name: "可可",
+            type: '阿拉斯加',
+            age: 3,
+            color: 'red',
+            bark: function(){
+                console.log('汪汪汪');
+            },
+            showFilm: function(){
+                console.log(this.name+'是一只' +this.type+ '出演了电影');
+            }
+        }
+        console.log(dog.name);
+        dog.showFilm();
+        
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

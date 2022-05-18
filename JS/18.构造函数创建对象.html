@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构造函数</title>
+    <script>
+        // var starts = {
+        //     starts: function(name,age,gender,sing){
+        //         this.name = name;
+        //         this.age = age;
+        //         this.gender = gender;
+        //         this.sing= sing;
+        //     },
+        //     printf: function(){
+        //         console.log(this.name+this.age+this.gender);
+        //     }
+        // }
+        // starts.starts('刘德华',43,'男','不知道');
+        // starts.printf();
+
+        //构造函数
+        function Person(name,age,gender){
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.sang = function(sang){
+                console.log(sang);
+            }
+        }
+        //创建对象 red
+        var red = new Person('red',20,'男');
+        console.log(typeof red);
+        console.log(red);
+        red.sang('喜羊羊');
+
+        //创建对象black
+        var black =  new Person('black',22,'男');
+        console.log(black.age);
+        black.sang('慢悠悠');
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

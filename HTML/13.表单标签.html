@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表单标签</title>
+</head>
+<body>
+    <div>
+        <form action="#" method="post" name="userInfo">
+            <!-- input标签 -->
+            <!-- name:表单元素的名字 -->
+            <!-- value:表单元素的值 -->
+            <!-- name和value是后台能取到的表单的属性和字段 -->
+            <!-- text文本输入框 -->
+            <!-- 文本框允许输入的maxlength最大长度 -->
+            用户名：<input type="text" name="username" placeholder="用户名" value="" maxlength="16"><br>
+            <!-- password密码输入框 -->
+            密码：<input type="password" name="pwd" value=""><br>
+            <!-- radio单选框 -->
+            <!-- checked默认勾选按钮 -->
+            性别：
+            <label for="gender0">男</label>
+            <input type="radio" name="gender" id="gender0" value="1">
+            <label for="gender1">女</label>
+            <input type="radio" name="gender" id="gender1" value="0"><br>
+            <!-- checkbox复选框 -->
+            爱好：篮球<input type="checkbox" name="hobbies" value="basketball">
+            唱歌<input type="checkbox" name="hobbies" value="sing">
+            跳<input type="checkbox" name="hobbies" value="junp">
+            rap<input type="checkbox" name="hobbies" value="rap"><br>
+            <!-- 文件上传file -->
+            上传头像:<input type="file" name="header" value=""><br>
+
+            <!-- 下拉框 -->
+            <select name="address" id="">
+                地址：
+                <option value="BeiJing" selected="selected">北京</option>
+                <option value="ShangHai">上海</option>
+                <option value="ShenZhen">深圳</option>
+            </select>
+            <br>
+            <!-- textarea文本域 -->
+            <div>个人简介：</div>
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <br>
+
+            <!-- submit提交 -->
+            <input type="submit" value="ok">
+            <!-- 重置按钮 -->
+            <input type="reset" value="重置">
+            <br>
+            <!-- 普通按钮button标签 后期结合js搭配使用 -->
+            <input type="button" value="获取短信验证码">
+
+        </form>
+    </div>
+</body>
+</html>

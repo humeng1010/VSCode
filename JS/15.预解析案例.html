@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预解析</title>
+    <script>
+        //预解析:
+        //1、js引擎会自动把var声明的变量(不进行赋值) 和 function函数(不包含匿名函数) 
+        //   自动提升到代码的最前面
+        //2、然后按照代码顺序依次执行代码
+
+        //案例一:
+        // var num = 10;
+
+        // function fn(){
+        //     console.log(num);
+        //     var num = 20;
+        //     console.log(num);
+        // }
+        // fn();
+        //相当于以下代码:
+        // var num;
+
+        // function fn(){
+        //     var num;
+        //     console.log(num);//undefined
+        //     num = 20;
+        //     console.log(num);//20
+        // }
+
+        // num = 10;
+
+        // fn();
+
+        //案例二:
+        // var a = 18;
+        // f1();
+        // function f1(){
+        //     var b = 9;
+        //     console.log(a);
+        //     console.log(b);
+        //     var a = '123';
+        // }
+        //相当于以下代码:
+        // var a;
+        // function f1(){
+        //     var a;
+        //     var b;
+        //     b = 9;
+        //     console.log(a);//undefined
+        //     console.log(b);//9
+        //     a = '123';
+        // }
+        // a = 18;
+        // f1();
+
+        //案例三:
+        f1();
+        console.log(c);
+        console.log(b);
+        console.log(a);
+
+        function f1(){
+            var a = b = c = 9;
+            console.log(a);
+            console.log(b);
+            console.log(c);
+        }
+
+        //相当于以下代码:
+        // function f1(){
+        //     var a;
+        //     a = b = c = 9;
+        //     console.log(a);//9
+        //     console.log(b);//9
+        //     console.log(c);//9
+        // }
+
+        // f1();
+        // console.log(c);//9
+        // console.log(b);//9
+        // console.log(a);//a is not defined
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遍历对象</title>
+    <script>
+        var obj = {
+            name: 'red',
+            age: 20,
+            gender: '男'
+        }
+        for (const key in obj) {
+            if (Object.hasOwnProperty.call(obj, key)) {
+                const element = obj[key];
+                console.log(element);
+                
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
