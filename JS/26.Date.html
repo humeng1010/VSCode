@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+    <script>
+        //Date() 日期对象 是一个构造函数 必须使用new 来调用创建我们的日期对象
+        //创建一个数组对象:
+        var arr = new Array();
+        //创建一个对象实例:
+        var obj = new Object();
+        
+        //创建日期对象:
+        //1:(如果没有参数 返回系统当前时间)
+        var date = new Date();
+        console.log(date);
+        //2:参数的写法 数字型 2022,05,20 或者是字符串型 '2022-05-20 0:0:0'
+        var date1 = new Date(2022,05,20);//返回的是六月，而不是五月
+        console.log(date1);
+        //3:字符串型的参数
+        var date2 = new Date('2022-05-20 00:00:00');
+        console.log(date2);
+
+        
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
