@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var str = 'oabcoefoxyozzopp';
+        var index = str.indexOf('o');
+        // console.log(index);
+        var number = 0;
+        while(index!==-1){
+            number++;
+            console.log('第'+number+'次的位置:'+index);
+            
+            index = str.indexOf('o',++index);
+        }
+        console.log('一共出现了:'+number);
+</script>
+</head>
+<body>
+    
+</body>
+</html>
