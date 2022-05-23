@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        //innerText和innerHTML有什么不同
+        //innerHTML可以识别HTML标签
+        //1.innerText
+        var div = document.querySelector('div');
+        div.innerText = '<strong>今天是:</strong>2022';
+        //2.innerHTML W3C标准
+        div.innerHTML = '<strong>今天是:</strong>2022';
+    </script>
+</body>
+</html>
