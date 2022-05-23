@@ -8,6 +8,7 @@
 </head>
 <body>
     <div></div>
+    <div class="date"></div>
     <script>
         //innerText和innerHTML有什么不同
         //innerHTML可以识别HTML标签
@@ -15,7 +16,9 @@
         var div = document.querySelector('div');
         div.innerText = '<strong>今天是:</strong>2022';
         //2.innerHTML W3C标准
-        div.innerHTML = '<strong>今天是:</strong>2022';
+        var date = document.querySelector('.date');
+        date.innerHTML = '<strong>今天是:</strong>2022';
+        // div.innerHTML = '<strong>今天是:</strong>2022';
     </script>
 </body>
 </html>
