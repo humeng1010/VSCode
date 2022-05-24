@@ -9,6 +9,10 @@
 <body>
     <div></div>
     <div class="date"></div>
+    <p>
+        我是文字
+        <span>123</span>
+    </p>
     <script>
         //innerText和innerHTML有什么不同
         //innerHTML可以识别HTML标签
@@ -19,6 +23,10 @@
         var date = document.querySelector('.date');
         date.innerHTML = '<strong>今天是:</strong>2022';
         // div.innerHTML = '<strong>今天是:</strong>2022';
+        var p = document.querySelector('p');
+        console.log(p);
+        console.log(p.innerText);//去除换行和空格
+        console.log(p.innerHTML);//保留空格和换行
     </script>
 </body>
 </html>
