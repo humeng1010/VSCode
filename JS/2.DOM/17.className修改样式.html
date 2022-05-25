@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0 auto;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            color: blue;
+        }
+        .change {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div></div>
+
+    <script>
+        var div = document.querySelector('div');
+        var flag = true;
+        div.innerHTML = '嗨嗨嗨';
+        div.onclick = function(){
+            if(flag){
+                this.className = 'change';
+                this.innerHTML = '来喽';
+                flag = false;
+            }else{
+                this.className = 'div';
+                this.innerHTML = '嗨嗨嗨';
+                flag = true;
+            }
+            
+        }
+    </script>
+</body>
+</html>
