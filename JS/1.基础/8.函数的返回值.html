@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,30 +8,32 @@
     <title>函数的返回值</title>
     <script>
         //利用函数求两个数的最大值
-        function getMax(num1,num2){
-            return num1>num2?num1:num2;
+        function getMax(num1, num2) {
+            return num1 > num2 ? num1 : num2;
         }
-        var max = getMax(10,11);
+        var max = getMax(10, 11);
         console.log(max);
 
         //利用函数返回数组的最大元素
-        function getArraysMax(arr){
+        function getArraysMax(arr) {
             var max = arr[0];
-            for(var i = 1; i<arr.length; i++){
-                if(arr[i]>max){
+            for (var i = 1; i < arr.length; i++) {
+                if (arr[i] > max) {
                     max = arr[i];
                 }
-                
+
             }
             return max;
         }
-        var arr = [0,10,33,22,55,100];
+        var arr = [0, 10, 33, 22, 55, 100];
         var re = getArraysMax(arr);
         console.log(re);
 
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

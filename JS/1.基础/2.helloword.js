@@ -8,9 +8,9 @@ console.log(num);
 //弹出num
 alert(num);
 //if语句
-if(num >= 0){
-    alert(num+"是正数");
-}else{
-    alert(num+"是负数");
+if (num >= 0) {
+    alert(num + "是正数");
+} else {
+    alert(num + "是负数");
 }
 

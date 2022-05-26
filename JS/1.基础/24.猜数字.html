@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>猜数字</title>
     <script>
-        function getRandom(max,min){
-            return Math.floor(Math.random()*(max-min+1))+min;
+        function getRandom(max, min) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
         }
-        var random = getRandom(1,10);
+        var random = getRandom(1, 10);
         while (true) {
             var number = prompt('你来猜？ 输入1-10之间的数字');
-            if(number==random){
+            if (number == random) {
                 alert("猜对啦");
                 break;
-            }else if(number>random){
+            } else if (number > random) {
                 alert('有点大了');
-            }else{
+            } else {
                 alert('有点小');
             }
         }
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

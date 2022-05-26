@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +9,11 @@
     <script>
         var str = 'aabcdefghacdeaabcdd';
         var o = {};
-        for(var i = 0; i < str.length; i++){
+        for (var i = 0; i < str.length; i++) {
             var chars = str.charAt(i);
-            if(o[chars]){
+            if (o[chars]) {
                 o[chars]++;
-            }else{
+            } else {
                 o[chars] = 1;
             }
         }
@@ -21,17 +22,19 @@
         //遍历对象
         var max = 0;
         var ch = '';
-        for(var key in o){
-            if(o[key]>max){
+        for (var key in o) {
+            if (o[key] > max) {
                 ch = key;
                 max = o[key];
             }
         }
-        console.log(ch+':'+max);
+        console.log(ch + ':' + max);
 
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

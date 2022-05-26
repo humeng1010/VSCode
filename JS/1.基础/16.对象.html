@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,11 +11,11 @@
             uname: '张三',
             age: 18,
             gender: '男',
-            sayHi: function(){
+            sayHi: function () {
                 console.log("hi~");
             }
         }
-        
+
         console.log(obj.uname);
         console.log(obj["age"]);
         obj.sayHi();
@@ -24,20 +25,22 @@
             type: '阿拉斯加',
             age: 3,
             color: 'red',
-            bark: function(){
+            bark: function () {
                 console.log('汪汪汪');
             },
-            showFilm: function(){
-                console.log(this.name+'是一只' +this.type+ '出演了电影');
+            showFilm: function () {
+                console.log(this.name + '是一只' + this.type + '出演了电影');
             }
         }
         console.log(dog.name);
         dog.showFilm();
-        
-        
+
+
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

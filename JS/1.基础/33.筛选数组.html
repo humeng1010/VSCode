@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>筛选数组</title>
     <script>
-        var oldArray = [1500,1200,2000,2100,1800];
+        var oldArray = [1500, 1200, 2000, 2100, 1800];
         var newArray = [];
-        for(var i = 0; i < oldArray.length; i++){
-            if(oldArray[i]<2000){
+        for (var i = 0; i < oldArray.length; i++) {
+            if (oldArray[i] < 2000) {
                 newArray.push(oldArray[i]);
             }
         }
         console.log(newArray);
         newArray.reverse();//反转数组
         console.log(newArray);
-        newArray.sort(function(a,b){
+        newArray.sort(function (a, b) {
             // return a - b;//升序 ( a-b > 0 ? (a>b) : (a<b) )
             return b - a;//降序 
         });//自然排序(小到大)(冒泡排序)
         console.log(newArray);
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

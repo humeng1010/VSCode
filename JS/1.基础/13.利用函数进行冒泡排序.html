@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>冒泡排序</title>
     <script>
-        function sort(arr){
-            for(var i = 0; i < arr.length - 1; i++){
-                for(var j = 0; j < arr.length - i -1; j++){
-                    if(arr[j]>arr[j+1]){
+        function sort(arr) {
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
                         var temp = arr[j];
-                        arr[j] = arr[j+1];
-                        arr[j+1] = temp;
-                        
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+
                         //每次交换的结果
                         console.log(arr);
                     }
@@ -22,11 +23,13 @@
             return arr;
         }
 
-        var arr = sort([9,7,5,2,8,5,3,1,2]);
+        var arr = sort([9, 7, 5, 2, 8, 5, 3, 1, 2]);
         console.log(arr);
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>

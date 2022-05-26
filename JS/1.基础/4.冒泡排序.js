@@ -2,18 +2,18 @@
  * JS 冒泡排序
  */
 // var arr = [5,4,3,2,1];
-var arr = [1,2,3,4,5];
-for(var i = 0; i < arr.length -1; i++){//外层循环
-    for(var j = 0; j < arr.length - i - 1; j++){//内层循环
+var arr = [1, 2, 3, 4, 5];
+for (var i = 0; i < arr.length - 1; i++) {//外层循环
+    for (var j = 0; j < arr.length - i - 1; j++) {//内层循环
         //内部比较两个数,前一个数和后一个数比较
         //升序排列:
         //如果前面一个数大于后面一个数就交换两个数的顺序
         //降序排列:
         //如果前面一个数小于后面一个数就交换两个数的顺序
-        if(arr[j] > arr[j+1]){
+        if (arr[j] > arr[j + 1]) {
             var temp = arr[j];
-            arr[j] = arr[j+1];
-            arr[j+1] = temp;
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
         }
     }
 }
@@ -22,16 +22,16 @@ for(var i = 0; i < arr.length -1; i++){//外层循环
 // console.log(arr);
 
 
-function sort(arr){
-    for(var i = 0; i < arr.length - 1; i++){
-        for(var j = 0; j < arr.length - i - 1; j++){
-            if(arr[j] > arr[j+1]){
+function sort(arr) {
+    for (var i = 0; i < arr.length - 1; i++) {
+        for (var j = 0; j < arr.length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
                 var temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
                 // console.log(arr);
             }
-            
+
         }
 
     }
@@ -39,8 +39,8 @@ function sort(arr){
 
 }
 
-console.log(sort([3,4,1,2,8,7,9,5]));
+console.log(sort([3, 4, 1, 2, 8, 7, 9, 5]));
 
-var sort = function(arr){
-    
+var sort = function (arr) {
+
 }

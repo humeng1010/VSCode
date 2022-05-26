@@ -3,7 +3,7 @@ alert(Math.acos(90))
 var person = {
     name: "xxx",
     age: 3,
-    target: ['js',2,'java','web']
+    target: ['js', 2, 'java', 'web']
 };
 console.log(person.name);
 console.log(person.age);
