@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 100px;
+            margin: 100px auto;
+            text-align: center;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        thead tr {
+            height: 30px;
+            background-color: skyblue;
+        }
+        tbody tr {
+            height: 30px;
+        }
+        tbody td {
+            border-bottom: 1px solid #d7d7d7;
+            font-style: 12px;
+            color: blue;
+        }
+
+        .bg{
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>1222222222</th>
+                <th>222222222</th>
+                <th>322222222</th>
+                <th>422222222</th>
+                <th>522222222</th>
+                <th>62222222</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+            </tr>
+            <tr>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+            </tr>
+            <tr>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+            </tr>
+            <tr>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        //获取元素 获取的是tbody中的tr
+        var trs = document.querySelector('tbody').querySelectorAll('tr');
+        //利用循环绑定注册事件
+        for(var i = 0; i < trs.length; i++){
+            //鼠标经过事件 onmouseover
+            trs[i].onmousemove = function(){
+                this.className = 'bg';
+            }
+            //鼠标离开事件
+            trs[i].onmouseout = function(){
+                this.className = '';
+            }
+        }
+    </script>
+</body>
+</html>
