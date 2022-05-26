@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,16 +14,18 @@
         }
     </style>
 </head>
+
 <body>
     <div></div>
 
     <script>
         var div = document.querySelector('div');
-        div.onclick = function(){
+        div.onclick = function () {
             //修改的是行内样式，而不是css的属性，权重比较高，覆盖了css存在的样式
             this.style.background = 'purple';
             this.style.width = '250px';
         }
     </script>
 </body>
+
 </html>

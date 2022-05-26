@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .box{
+        .box {
             position: relative;
             width: 74px;
             height: 88px;
@@ -16,13 +17,14 @@
             text-align: center;
             color: #f40;
         }
+
         .box img {
             width: 60px;
             margin-top: 5px;
         }
 
 
-        .close-btn{
+        .close-btn {
             position: absolute;
             top: -1px;
             left: -16px;
@@ -35,6 +37,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="box">
         图片
@@ -45,9 +48,10 @@
     <script>
         var btn = document.querySelector('.close-btn');
         var box = document.querySelector('.box');
-        btn.onclick = function(){
+        btn.onclick = function () {
             box.style.display = 'none';
         }
     </script>
 </body>
+
 </html>

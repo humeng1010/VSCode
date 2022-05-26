@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,30 +12,34 @@
             padding: 0;
         }
 
-        body{
+        body {
             background: url("/Users/humeng/Pictures/截屏2022-04-26 下午7.47.10.png") no-repeat center top;
         }
-        li{
+
+        li {
             list-style: none;
         }
-        .baidu{
+
+        .baidu {
             overflow: hidden;
             margin: 100px auto;
             background-color: #fff;
             width: 410px;
             padding-top: 3px;
         }
-        .baidu li{
+
+        .baidu li {
             float: left;
             margin: 0 1px;
             cursor: pointer;
         }
-        .baidu img{
+
+        .baidu img {
             width: 100px;
         }
-
     </style>
 </head>
+
 <body>
     <ul class="baidu">
         <li><img src="/Users/humeng/Pictures/截屏2022-04-26 下午7.47.10.png" alt=""></li>
@@ -46,12 +51,13 @@
     <script>
         var imgs = document.querySelector('.baidu').querySelectorAll('img');
         // console.log(imgs);
-        for(var i = 0; i<imgs.length; i++){
-            imgs[i].onclick = function(){
+        for (var i = 0; i < imgs.length; i++) {
+            imgs[i].onclick = function () {
                 document.body.style.backgroundImage = 'url(' + this.src + ')';
             }
         }
 
     </script>
 </body>
+
 </html>
