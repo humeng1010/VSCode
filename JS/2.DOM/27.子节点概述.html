@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+
+    <script>
+        //得到ui里面的所有的li
+        var ul = document.querySelector('ul');
+        //这中会获取ul中的所以孩子，包括了换行text和元素不过我们大多数是操作元素的，所以不经常使用
+        console.log(ul.childNodes);
+        //我们经常使用的是element.children 获取所有子元素节点 也是我们实际开发常用的
+        console.log(ul.children);
+    </script>
+</body>
+
+</html>

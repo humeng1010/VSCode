@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tab_list li {
+            list-style: none;
+            float: left;
+            height: 39px;
+            line-height: 39px;
+            padding: 0 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .tab_list .current {
+            background-color: #c81623;
+            color: #fff;
+        }
+
+        .item_info {
+            padding: 20px 0 20px;
+        }
+
+        .item {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab_list">
+            <ul>
+                <li class="current">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评价(999+)</li>
+                <li>手机社区</li>
+            </ul>
+        </div>
+        <div class="tab_con">
+            <div class="item" style="display: block;">商品介绍模块</div>
+            <div class="item">规格与包装内容</div>
+            <div class="item">售后保障模块内容</div>
+            <div class="item">商品评价。。。</div>
+            <div class="item">手机社区模块</div>
+        </div>
+    </div>
+
+    <script>
+        //1.改变选中模块的颜色(排他思想)
+        var lis = document.querySelector('.tab_list').querySelectorAll('li');
+        var items = document.querySelectorAll('.item');
+        // console.log(items);
+        //2.for循环绑定鼠标移动事件
+        for (var i = 0; i < lis.length; i++) {
+            //开始给5个li设置索引号
+            lis[i].setAttribute('index', i);
+            lis[i].onmouseover = function () {
+                /*
+                    选项卡模块
+                */
+                //干掉所有
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                //留下自己
+                this.className = 'current';
+                /*
+                    内容显示模块
+                */
+                var index = this.getAttribute('index');
+                // console.log(index);
+                //干掉其他
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+
+                items[index].style.display = 'block';
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>

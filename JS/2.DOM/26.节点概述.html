@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 利用节点层级关系获取元素 -->
+    <!-- 利用父子兄节点关系获取元素 -->
+    <!-- 逻辑性强，但是兼容性稍差 -->
+    <div>我是div</div>
+    <span>我是span</span>
+
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+
+    <div class="box">
+        <span class="erweima">x</span>
+    </div>
+
+    <script>
+        //不使用节点做法
+        // var erweima = document.querySelector('.erweima');
+        // var box = document.querySelector('.box');
+        // erweima.onclick = function () {
+        // box.style.display = 'none';
+        // }
+        //使用节点操作
+        var ma = document.querySelector('.erweima');
+        // console.log(ma.parentNode);
+        ma.onclick = function () {
+            //得到距离这个颜色最近的父级节点
+            this.parentNode.style.display = 'none';
+            console.log('已关闭box');
+        }
+
+        //ma的爸爸的爸爸叫body
+        console.log(ma.parentNode.parentNode);
+
+
+    </script>
+</body>
+
+</html>
