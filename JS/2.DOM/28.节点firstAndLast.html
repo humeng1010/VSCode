@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ol>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ol>
+
+    <script>
+        var ol = document.querySelector('ol');
+        //firstChild--第一个子节点不管是文本还是元素
+        console.log(ol.firstChild);
+        //lastChild--最后一个子节点不管是文本还是元素
+        console.log(ol.lastChild);
+        //firstElementChild--返回子节点一个子元素-IE9以上支持
+        console.log(ol.firstElementChild);
+        //lastElementChild--返回最后一个子节点子元素-IE9以上支持
+        console.log(ol.lastElementChild);
+
+        console.log('-------解决方案---------');
+        //解决方案
+        console.log(ol.children[0]);//第一个
+        console.log(ol.children[ol.children.length - 1]);//最后一个
+    </script>
+</body>
+
+</html>
