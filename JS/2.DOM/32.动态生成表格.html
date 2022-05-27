@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        //1.准备学生数据
+        //对象数组
+        var datas = [{
+            name: 'jack',
+            subject: 'java',
+            score: 100
+        }, {
+            name: 'andy',
+            subject: 'java',
+            score: 90
+        }, {
+            name: 'lisa',
+            subject: 'java',
+            score: 80
+        }, {
+            name: 'xxx',
+            subject: 'java',
+            score: 70
+        }];
+
+        //向tbody里面创建行
+        var tbody = document.querySelector('tbody');
+        for (var i = 0; i < datas.length; i++) {
+            //创建tr行
+            var tr = document.createElement('tr');
+            //插入
+            tbody.appendChild(tr);
+            //行里面创建单元格
+            for (var key in datas[i]) {
+                //创建单元格
+                var td = document.createElement('td');
+                td.innerHTML = datas[i][key];
+                tr.appendChild(td);
+
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
