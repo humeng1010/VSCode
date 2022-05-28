@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>传统注册事件</button>
+    <button>方法监听注册事件</button>
+    <button>ie9之前</button>
+    <script>
+        var btns = document.querySelectorAll('button');
+        //传统方式
+        btns[0].onclick = function () {
+            alert('hello');
+        }
+        btns[0].onclick = function () {
+            alert('world');//后面的会覆盖掉前面的点击事件
+        };
+
+        //监听器
+        btns[1].addEventListener('click', function () {
+            alert(22);
+        });
+        btns[1].addEventListener('click', function () {
+            alert(33);
+        });
+
+        //attachEvent
+        btns[2].attachEvent('onclick', function () {
+            alert('ie9')
+        })
+
+    </script>
+</body>
+
+</html>

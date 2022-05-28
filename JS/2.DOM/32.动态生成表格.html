@@ -60,6 +60,10 @@
             name: 'xxx',
             subject: 'java',
             score: 70
+        }, {
+            name: '大猪头',
+            subject: 'java',
+            score: 0
         }];
 
         //向tbody里面创建行
@@ -76,6 +80,19 @@
                 td.innerHTML = datas[i][key];
                 tr.appendChild(td);
 
+            }
+
+            //创建删除单元格
+            var td = document.createElement('td');
+            td.innerHTML = '<a href = "javascript:;">删除</a>';
+            tr.appendChild(td);
+        }
+        //删除行
+        var as = document.querySelectorAll('a');
+        for (var i = 0; i < as.length; i++) {
+            as[i].onclick = function () {
+                //点击a删除当前a所在的行
+                tbody.removeChild(this.parentNode.parentNode);
             }
         }
 
