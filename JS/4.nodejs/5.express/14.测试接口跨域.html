@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <button id="btnGet">GET</button>
+    <button id="btnPost">POST</button>
+
+    <script>
+        $(function () {
+            //测试get接口
+            $('#btnGet').on('click', () => {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1/api/get',
+                    data: { name: 'zs', age: 20 },
+                    success: (res) => {
+                        console.log(res);
+                    }
+                })
+            })
+            //测试post接口
+            $('#btnPost').on('click', () => {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://127.0.0.1/api/post',
+                    data: { bookname: '肖申克的救赎', author: '安迪' },
+                    success: (res) => {
+                        console.log(res);
+                    }
+                })
+            })
+
+        })
+    </script>
+</body>
+
+</html>
