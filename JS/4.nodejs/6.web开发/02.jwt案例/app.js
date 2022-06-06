@@ -14,8 +14,10 @@ const cors = require('cors')
 app.use(cors())
 
 // 解析 post 表单数据的中间件
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({ extended: false }))
+// const bodyParser = require('body-parser')
+// app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 // TODO_02：定义 secret 密钥，建议将密钥命名为 secretKey
 //我们专门定义的一个加密解密的密钥
