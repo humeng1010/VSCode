@@ -23,6 +23,7 @@ const updateTime = (req, res, next) => {
     //获取req中的json数据，为更新时间赋值
     const date = new Date()
     console.log(date);
+    req.body.create_time = date;
 
     next()
 
@@ -32,6 +33,8 @@ const create_update_time = (req, res, next) => {
     //获取req中的json数据，为更新和创建时间赋值
     const date = new Date()
     console.log(date);
+    req.body.create_time = date;
+    req.body.update_time = date;
 
     next()
 
@@ -39,7 +42,7 @@ const create_update_time = (req, res, next) => {
 
 
 //查询用户基本信息
-app.get('/user', updateTime, (req, res) => {
+app.get('/user', (req, res) => {
     const selSql = 'select * from node_user'
     connection.query(selSql, (err, result) => {
         if (err) {
@@ -51,7 +54,7 @@ app.get('/user', updateTime, (req, res) => {
     })
 })
 
-//根据id查询用户
+//根据id查询用户基本信息
 app.get('/user/:id', (req, res) => {
     const selSql = 'select * from node_user where id = ?'
     const id = req.params.id
@@ -63,6 +66,31 @@ app.get('/user/:id', (req, res) => {
         console.log(result);
         res.send(result)
     })
+
+})
+
+//添加用户基本信息
+app.post('/user/add', create_update_time, (req, res) => {
+    const delSql = 'insert into node_user (name, password, create_time, update_time, is_delete) values(?, ?, ?, ?, ?)'
+    const user = {
+        name: req.body.name,
+        password: req.body.password,
+        create_time: req.body.create_time,
+        update_time: req.body.update_time,
+        is_delete: 0
+    }
+    connection.query(delSql, [user.name, user.password, user.create_time, user.update_time, user.is_delete], (err, result) => {
+        if (err) {
+            res.send('添加失败')
+            return console.log('添加失败');
+        }
+        console.log(result);
+        res.send(result)
+    })
+})
+
+//修改用户基本信息
+app.put('/user/update', updateTime, (req, res) => {
 
 })
 
