@@ -18,6 +18,7 @@ app.use(express.urlencoded({ extended: false }))
 const cors = require('cors')
 app.use(cors())
 //中间件
+
 //更新时间
 const updateTime = (req, res, next) => {
     //获取req中的json数据，为更新时间赋值
