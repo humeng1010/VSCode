@@ -19,23 +19,25 @@ const cors = require('cors')
 app.use(cors())
 //中间件
 
-//更新时间
+//修改用户(put)更新时间
 const updateTime = (req, res, next) => {
     //获取req中的json数据，为更新时间赋值
     const date = new Date()
     console.log(date);
     req.body.create_time = date;
 
+
     next()
 
 }
-//创建和更新时间
+//创建用户(post)和更新时间
 const create_update_time = (req, res, next) => {
     //获取req中的json数据，为更新和创建时间赋值
     const date = new Date()
     console.log(date);
     req.body.create_time = date;
     req.body.update_time = date;
+
 
     next()
 
@@ -92,6 +94,15 @@ app.post('/user/add', create_update_time, (req, res) => {
 
 //修改用户基本信息
 app.put('/user/update', updateTime, (req, res) => {
+
+
+    const user = {
+        name: req.body.name,
+        password: req.body.password,
+        update_time: req.body.update_time,
+        is_delete: 0
+    }
+
 
 })
 
