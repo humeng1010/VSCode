@@ -17,14 +17,17 @@ app.use(express.urlencoded({ extended: false }))
 //跨域
 const cors = require('cors')
 app.use(cors())
+
 //中间件
 
+//局部中间件
 //修改用户(put)更新时间
 const updateTime = (req, res, next) => {
     //获取req中的json数据，为更新时间赋值
     const date = new Date()
     console.log(date);
-    req.body.create_time = date;
+    req.body.update_time = date;
+
 
 
     next()
@@ -96,12 +99,23 @@ app.post('/user/add', create_update_time, (req, res) => {
 app.put('/user/update', updateTime, (req, res) => {
 
 
+    const updSql = 'update node_user set name = ? ,password = ?,update_time = ?,is_delete = ? where id = ?'
     const user = {
+        id: req.body.id,
         name: req.body.name,
         password: req.body.password,
         update_time: req.body.update_time,
         is_delete: 0
     }
+
+    connection.query(updSql, [user.name, user.password, user.update_time, user.is_delete, user.id], (err, result) => {
+        if (err) {
+            console.log('修改失败');
+            return res.send('修改失败')
+        }
+        console.log(result);
+        res.send(result)
+    })
 
 
 })
