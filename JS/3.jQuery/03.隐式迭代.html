@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.min.js"></script>
+</head>
+
+<body>
+    <div>惊喜</div>
+    <div>惊喜</div>
+    <div>惊喜</div>
+    <div>惊喜</div>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <ol>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ol>
+    </ul>
+    <script>
+        $(() => {
+            //获取四个div
+            console.log($('div'));
+
+            //给四个div设置背景颜色为粉色
+            $('div').css('background', 'pink')
+            //隐式迭代就是把匹配的所有元素内部进行循环遍历，给每一个元素添加css这个方法
+
+            //给ul里的li(亲儿子)的背景颜色修改为red
+            $('ul>li').css('background', 'red')
+
+        })
+    </script>
+</body>
+
+</html>

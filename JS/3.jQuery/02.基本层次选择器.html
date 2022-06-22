@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.min.js"></script>
+</head>
+
+<body>
+    <div>我是div</div>
+    <div class="nav">我是nav div</div>
+    <p>我是p</p>
+    <ol>
+        <li>我是ol的</li>
+        <li>我是ol的</li>
+        <li>我是ol的</li>
+        <li>我是ol的</li>
+        <ul>
+            <li>我是ol的</li>
+            <li>我是ol的</li>
+            <li>我是ol的</li>
+            <li>我是ol的</li>
+        </ul>
+
+    </ol>
+    <ul>
+        <li>我是ol的</li>
+        <li>我是ol的</li>
+        <li>我是ol的</li>
+        <li>我是ol的</li>
+    </ul>
+
+    <script>
+        $(() => {
+            //类选择器
+            console.log($('.nav'));
+            //子代选择器 亲儿子
+            console.log($('ol>li'));
+            //所有的子代
+            console.log($('ul li'));
+        })
+    </script>
+</body>
+
+</html>
