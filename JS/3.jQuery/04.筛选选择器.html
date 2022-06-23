@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.min.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+    </ul>
+
+    <ol>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+        <li>多个里面筛选几个</li>
+    </ol>
+
+    <script>
+        // jQuery的入口函数
+        $(() => {
+            //ul 里的第一个li
+            $('ul li:first').css('color', 'red')
+            //ul 里的第三个li
+            $('ul li:eq(2)').css('color', 'blue')
+
+            //ol 里的奇数 odd
+            $('ol li:odd').css('color', 'skyblue')
+            //even
+            $('ol li:even').css('color', 'pink')
+        })
+    </script>
+
+</body>
+
+</html>
