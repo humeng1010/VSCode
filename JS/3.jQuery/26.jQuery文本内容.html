@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <span>我是内容</span>
+        <span>我是内容</span>
+        <span>我是内容</span>
+    </div>
+    <input type="text" value="请输入内容">
+    <script>
+        $(() => {
+            //获取设置元素内容
+            console.log($('div span').eq(0).html());
+            //设置元素内容
+            $('div span').eq(1).html('hello');
+
+            //获取设置文本
+            console.log($('div').children('span').eq(0).text());
+
+            $('div').children('span').eq(2).text("world");
+
+            //获取设置表单值val()
+            $('input').val("123");
+            $('input').change(function () {
+                console.log($('input').val());
+            })
+        })
+    </script>
+
+</body>
+
+</html>
