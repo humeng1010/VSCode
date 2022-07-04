@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.引入echarts -->
+    <script src="js/node_modules/echarts/dist/echarts.min.js"></script>
+    <style>
+        .box {
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 2.创建一个盒子 -->
+    <div class="box"></div>
+
+    <script>
+        // 3.初始化echarts
+        var myCharts = echarts.init(document.querySelector(".box"))
+
+        // 4.指定配置项(图表的样式)
+        var option = {
+            backgroundColor: '#2c343c',
+            title: {
+                text: '我的编程语言学习占比',
+                left: 'center',
+                top: 20,
+                textStyle: {
+                    color: '#ccc'
+                }
+            },
+            tooltip: {
+                trigger: 'item'
+            },
+            visualMap: {
+                show: false,
+                min: 80,
+                max: 600,
+                inRange: {
+                    colorLightness: [0, 1]
+                }
+            },
+            series: [
+                {
+                    name: '详情',
+                    type: 'pie',
+                    radius: '55%',
+                    center: ['50%', '50%'],
+                    data: [
+                        { value: 335, name: 'JavaSE' },
+                        { value: 310, name: 'JavaWeb' },
+                        { value: 274, name: 'Spring' },
+                        { value: 235, name: 'HTML&CSS&JS' },
+                        { value: 400, name: 'AJAX&Node.js&VUE' }
+                    ].sort(function (a, b) {
+                        return a.value - b.value;
+                    }),
+                    roseType: 'radius',
+                    label: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    },
+                    labelLine: {
+                        lineStyle: {
+                            color: 'rgba(255, 255, 255, 0.3)'
+                        },
+                        smooth: 0.2,
+                        length: 10,
+                        length2: 20
+                    },
+                    itemStyle: {
+                        color: '#c23531',
+                        shadowBlur: 200,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    },
+                    animationType: 'scale',
+                    animationEasing: 'elasticOut',
+                    animationDelay: function (idx) {
+                        return Math.random() * 200;
+                    }
+                }
+            ]
+        };
+        // 5.使用示例
+        myCharts.setOption(option)
+
+    </script>
+</body>
+
+</html>

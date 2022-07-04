@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+    <script>
+        $(() => {
+            function $(ele) {
+                return document.querySelectorAll(ele)
+            }
+            console.log($("div"))
+            //我们再使用jQuery中的$里的each方法遍历对象
+            jQuery.each()
+            var suibian = jQuery.noConflict()
+            suibian("span")
+        })
+    </script>
+</head>
+
+<body>
+    <div></div>
+    <span></span>
+</body>
+
+</html>
