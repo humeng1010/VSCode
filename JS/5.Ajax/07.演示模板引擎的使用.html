@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 1.art-template模板引擎引入 -->
+    <!-- 然后就在全局，多了一个template函数，template('模板id',需要渲染的数据) -->
+    <script src="./lib/node_modules/art-template/lib/template-web.js"></script>
+    <!-- 引入jQuery -->
+    <script src="./lib/jquery.js"></script>
+</head>
+
+<body>
+    <div class="container"></div>
+    <!-- 3.定义模板 -->
+    <!-- 3.1模板的HTML结构，必须定义到script标签中 -->
+    <script type="text/html" id="tpl-user">
+        <!-- {{xx}} 占位符 -->
+    <h1>{{name}} ----- {{age}}</h1>
+
+    <!-- 当我们输出内容中包含了html结构，而且需要用原文输出，则需要在value值的前面加上@符号 -->
+    {{@test}}
+
+    <!-- if -->
+    {{if flag === 0}}
+    flag的值为0
+    {{else if flag === 1}}
+    flag的值为1
+    {{/if}}
+
+    <!-- each -->
+    {{each hobbies}}
+    <li>索引是:{{$index}},循环项是:{{$value}}</li>
+    {{/each}}
+
+    <!-- 过滤器 -->
+    <h3>{{regTime | dateFormat}}</h3>
+
+    </script>
+
+    <!-- script标签默认的type属性为text/javascript被当做为js解析 -->
+    <script type="text/javascript">
+
+        template.defaults.imports.dateFormat = function (date) {
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var day = date.getDate();
+            var time = date.getHours();
+            var times = date.getMinutes();
+            return year + '-' + month + '-' + day + '-' + time + ':' + times;
+
+
+        };
+        // 2.定义数据
+        var data = {
+            name: 'zs',
+            age: 20,
+            test: '<h3>测试原文输出</h3>',
+            flag: 1,
+            hobbies: ['吃饭', '睡觉', '打豆豆'],
+            regTime: new Date()
+        };
+        // 4.调用 template 函数
+        var htmlStr = template('tpl-user', data);
+        console.log(htmlStr);
+        // 5.操作DOM
+        // 原生js
+        // document.querySelector('.container').innerHTML = htmlStr
+        // jQuery
+        $('.container').html(htmlStr);
+    </script>
+
+</body>
+
+</html>
