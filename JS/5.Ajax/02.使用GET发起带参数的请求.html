@@ -10,18 +10,18 @@
 </head>
 
 <body>
-    <button id="btnGET">发起GET请求(不带参数的请求)</button>
-    <div></div>
+    <button id="btnGETinfo">发起带参数的GET请求</button>
     <script>
         $(function () {
-            $('#btnGET').on('click', function () {
-                $.get('http://www.liulongbin.top:3006/api/getbooks', function (res) {
+            $('#btnGETinfo').on('click', function () {
+                $.get('http://www.liulongbin.top:3006/api/getbooks', { id: 1 }, function (res) {
                     console.log(res);
                 })
-            })
 
+            })
         })
     </script>
+
 </body>
 
 </html>
