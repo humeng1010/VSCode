@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 文件选择框 -->
+    <input type="file" id="file1">
+    <!-- 上传文件按钮 -->
+    <button id="btnUpload">上传文件</button>
+    <!-- img标签 显示上传后的图片 -->
+    <img src="" alt="" id="img" width="800px">
+
+    <script>
+        var btnUpload = document.querySelector("#btnUpload");
+        btnUpload.addEventListener("click", function () {
+            //获取文件列表
+            var files = document.querySelector("#file1").files
+            if (files.length <= 0) {
+                return alert("请选择要上传的文件!")
+
+            }
+
+        })
+    </script>
+
+</body>
+
+</html>
