@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/axios.js"></script>
+</head>
+
+<body>
+    <button id="btn1">发起GET请求</button>
+    <button id="btn2">发起POST请求</button>
+    <br>
+
+    <button id="btn3">直接使用axios发起GET请求</button>
+    <button id="btn4">直接使用axios发起POST请求</button>
+    <br>
+
+    <input type="file" id="file1">
+    <button id="upload">上传</button>
+    <br>
+
+    <form action="/login" id="form">
+        <!-- autocomplete="off" 阻止输入框自动填充 -->
+        <input type="text" name="username" autocomplete="off">
+        <input type="password" name="password">
+        <button type="submit">提交</button>
+    </form>
+
+    <script>
+        // 上传文件
+        document.querySelector("#upload").addEventListener("click", function () {
+            var files = document.querySelector("#file1").files
+            console.log(files);
+            if (files.length <= 0) {
+                return alert("请选择上传的文件");
+            }
+            var fd = new FormData();
+            fd.append("avatar", files[0]);
+            axios({
+                method: "POST",
+                url: "http://www.liulongbin.top:3006/api/upload/avatar",
+                data: fd
+            }).then(function (res) {
+                console.log(res.data);
+            })
+        })
+        //上传表单
+        var form = document.querySelector("#form");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            var fd = new FormData(form);
+            axios({
+                method: "POST",
+                url: "http://www.liulongbin.top:3006/api/formdata",
+                data: fd
+            }).then(function (res) {
+                console.log(res.data);
+            })
+
+
+        })
+
+
+        // GET
+        document.querySelector("#btn1").addEventListener("click", function () {
+            // 请求地址
+            var url = "http://www.liulongbin.top:3006/api/get";
+            // 请求参数
+            var paramsObj = {
+                name: "zs",
+                age: 20
+            }
+            axios.get(url, { params: paramsObj }).then(function (res) {
+                console.log(res.data);
+            })
+
+        })
+
+        document.querySelector("#btn3").addEventListener("click", function () {
+            // 请求地址
+            var url = "http://www.liulongbin.top:3006/api/get";
+            // 请求参数
+            var paramsObj = {
+                name: "钢铁侠",
+                age: 25
+            }
+            axios({
+                method: "GET",
+                url: url,
+                // GET请求是通过params提交查询字符串
+                params: paramsObj
+            }).then(function (res) {
+                console.log(res.data);
+
+            })
+        })
+        // POST
+        document.querySelector("#btn2").addEventListener("click", function () {
+            var url = "http://www.liulongbin.top:3006/api/post";
+            var dataObj = {
+                address: "北京",
+                location: "顺义"
+            };
+            axios.post(url, dataObj).then(function (res) {
+                console.log(res.data);
+            })
+        })
+
+        document.querySelector("#btn4").addEventListener("click", function () {
+            axios({
+                method: "POST",
+                url: "http://www.liulongbin.top:3006/api/post",
+                // POST请求是通过data提交数据
+                data: {
+                    bookname: "JavaScript从入门到精通",
+                    price: 66
+                }
+            }).then(function (res) {
+                console.log(res.data);
+            })
+        })
+    </script>
+
+</body>
+
+</html>
