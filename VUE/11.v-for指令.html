@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for指令</title>
+</head>
+
+<body>
+    <!-- 
+        v-for:
+        作用：根据数据生成列表结构
+        数组经常和v-for结合使用
+        语法是 (item,index) in 数据
+        item 和 index  可以结合其他指令一起使用
+        数组长度的更新会同步到页面上，是响应式的
+
+     -->
+    <div id="app">
+
+        <ul>
+            <li v-for="(item,index) in arr">索引:{{index+1}} 内容:{{item}} </li>
+        </ul>
+
+
+        <button @click="add">添加</button>
+        <button @click="remove">移除</button>
+        <ul>
+            <h2>
+                <li v-for="(item,index) in Obj">姓名:{{item.name}} 年龄:{{item.age}} 性别:{{item.gender}}</li>
+            </h2>
+        </ul>
+    </div>
+
+    <script src="./lib/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                arr: ["北京", "上海", "广州", "深圳", "南京"],
+                Obj: [{
+                    name: "张三",
+                    age: 20,
+                    gender: "男"
+                },
+                {
+                    name: "李四",
+                    age: 22,
+                    gender: "女"
+
+                }],
+            },
+            methods: {
+                add: function () {
+                    this.Obj.push({
+                        name: "王五",
+                        age: 22,
+                        gender: "男"
+                    })
+                },
+                remove: function () {
+                    this.Obj.shift();
+                }
+            },
+        })
+
+    </script>
+
+</body>
+
+</html>

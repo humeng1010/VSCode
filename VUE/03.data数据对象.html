@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <h2>
+            {{school.name}} &nbsp; {{school.age}} &nbsp; {{school.gender}}
+        </h2>
+        <h3>
+            <ui>
+                <li>{{hobbies[0]}}</li>
+                <li>{{hobbies[1]}}</li>
+                <li>{{hobbies[2]}}</li>
+                <li>{{hobbies[3]}}</li>
+            </ui>
+        </h3>
+    </div>
+
+    <script>
+        var vue = new Vue({
+            el: "#app",
+            data: {
+                message: "你好 小黑子",
+                school: {
+                    name: "ikun",
+                    age: 20,
+                    gender: "男"
+                },
+                hobbies: ["唱", "跳", "rap", "篮球"]
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind指令</title>
+    <style>
+        .active {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 为元素绑定属性
+        完整写法：v-bind:属性名="xxx"
+        简写：  :属性名="xxx"
+        如果设置的是class：我们建议使用对象的方式设置:  {类名:data}
+    -->
+    <div id="app">
+        <img v-bind:src="imgsrc" v-bind:title="imgtitle+'!!'" v-bind:class="{active:isActive}" @click="toggleActive">
+        <br>
+        <img v-bind:src="imgsrc" v-bind:title="imgtitle+'!!'" v-bind:class="isActive?'active':''">
+        <br>
+        <img :src="imgsrc" :class="{active:isActive}">
+    </div>
+    <script src=" ./lib/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                imgsrc: "./img/monkey.gif",
+                imgtitle: "monkey",
+                isActive: true,
+            },
+            methods: {
+                toggleActive: function () {
+                    this.isActive = !this.isActive;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
