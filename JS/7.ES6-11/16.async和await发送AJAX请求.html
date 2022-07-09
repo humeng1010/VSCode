@@ -20,7 +20,7 @@
                     if (xhr.status === 4) {
                         if (xhr.status >= 200 && xhr.status < 300) {
                             // 成功
-                            resolve(xhr.response)
+                            resolve(xhr.responseText)
                         } else {
                             // 失败
                             reject(xhr.status)
@@ -37,7 +37,7 @@
         async function main() {
             try {
                 // console.log("test");
-                let value = await sendAJAX("http://127.0.0.1:80/api/get?name=zs");
+                let value = await sendAJAX("http://www.liulongbin.top:3006/api/getbooks");
                 console.log(value);
             } catch (error) {
                 console.error(error);
