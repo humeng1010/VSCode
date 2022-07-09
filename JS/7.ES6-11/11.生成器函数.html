@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 生成器其实就是一个特殊的函数
+        function* gen() {
+            console.log("hello generator1");
+            yield '分割';
+            console.log("hello generator2");
+            yield '分割';
+            console.log("hello generator3");
+            yield '分割';
+            console.log("hello generator4");
+        }
+        let iterator = gen();
+        // console.log(iterator);
+        iterator.next();//调用next方法后才执行
+        iterator.next();
+        iterator.next();
+        iterator.next();
+    </script>
+
+</body>
+
+</html>

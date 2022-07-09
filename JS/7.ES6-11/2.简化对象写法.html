@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // ES6允许在大括号里面直接写入变量和函数，作为对象的属性和方法
+        // 这样书写更加简洁
+        let name = "小胡";
+        let todo = function () {
+            console.log("程序员");
+        }
+        const info = {
+            // ES6简化
+            name,
+            todo,
+            // me: function () {
+            //     console.log(this.name);
+            // }
+
+            // ES6
+            me() {
+                console.log(this.name);
+            }
+        }
+
+        info.me();
+
+
+    </script>
+
+</body>
+
+</html>

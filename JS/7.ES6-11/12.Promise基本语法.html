@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 实例化Promise对象
+        const p = new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                // let data = "数据库中的用户数据";
+                // 调用resolve方法后Promise的状态会变为成功，然后then方法就会响应成功的函数
+                // resolve(data);
+
+                let err = "数据读取失败";
+                // 调用reject方法后Promise的状态会变为失败，然后then方法就会响应失败的函数
+                reject(err);
+            }, 1000);
+        });
+        // 调用Promise中的then方法
+        p.then((value) => {
+            console.log(value);
+        }, (reson) => {
+            console.error(reson);
+        })
+    </script>
+
+</body>
+
+</html>

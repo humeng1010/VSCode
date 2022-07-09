@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // 1.合并数组
+        const kuaizi = ["王太利", "肖英"];
+        const fenghuang = ["曾毅", "玲花"];
+        // ES5合并数组
+        // const zuixuanxiaopingguo = kuaizi.concat(fenghuang);
+        // ES6扩展运算符应用
+        const zuixuanxiaopingguo = [...kuaizi, ...fenghuang];
+        console.log(zuixuanxiaopingguo);
+        // 2.拷贝数组
+        const arr = ["E", "X", "O", { name: "a" }];
+        const arrays = [...arr];
+        console.log(arrays);
+        // 3.将伪数组转换为真正的数组
+        const divs = document.querySelectorAll("div");
+        const divArr = [...divs]
+        console.log(divs);
+        console.log(divArr);
+
+    </script>
+
+</body>
+
+</html>

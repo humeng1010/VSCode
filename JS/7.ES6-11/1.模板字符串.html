@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 反引号 `
+        // 1.声明
+        let str = `我也是字符串`;
+        console.log(str, typeof str);
+        // 2.内容中可以直接出现换行符
+        let str1 = `<ul>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                    </ul>`;
+        console.log(str1);
+        // 3.变量拼接 在反引号中使用 ${xx}
+        let lover = "zww";
+        let mylove = `${lover}是我爱的baby`;
+        console.log(mylove);
+    </script>
+
+</body>
+
+</html>

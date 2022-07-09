@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ad {
+            width: 200px;
+            height: 200px;
+            background-color: #6cf;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ad"></div>
+
+    <script>
+        // 案例1
+        // 点击div后2s变为粉色
+        let ad = document.querySelector("#ad");
+        ad.addEventListener("click", function () {
+            // 之前的做法 (就是因为setTimeout中的函数this发生了改变)
+            // 保存当前作用域下的this的值
+            // let _this = this;
+            // 定时器
+            // setTimeout(function () {
+            //     _this.style.background = "pink";
+            // }, 2000)
+
+            // 所以定时器中使用箭头函数 可以使this为当前作用域函数(上面的function)的this 而且为静态的
+            setTimeout(() => {
+                // 此时this就是调用addEventListener的id为ad的div盒子了
+                this.style.background = "pink";
+            }, 2000)
+        });
+        // 案例2
+        // 从数组中返回偶数元素
+        const arr = [1, 6, 9, 10, 100, 25];
+        const result = arr.filter(function (item) {
+            if (item % 2 === 0) {
+                return true;
+            } else {
+                return false;
+            }
+        });
+        const result2 = arr.filter(item => item % 2 === 0)
+        console.log(result);
+        console.log(result2);
+
+        // 箭头函数适合场景
+        // 适合与this无关的回调，定时器，数组，方法回调
+        // 不适合与this有关的回调，dom元素的事件回调函数，对象的方法
+
+    </script>
+
+</body>
+
+</html>

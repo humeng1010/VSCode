@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 创建Symbol
+        let s = Symbol();
+        // console.log(s, typeof s);
+        // Symbol中的参数就相当于 两个人姓名相同 但是身份证号不同
+        let s2 = Symbol("Unicode");
+        let s3 = Symbol("Unicode");
+        console.log(s2);
+        console.log(s3);
+        console.log(s2 === s3);//false
+
+        // Symbol.for()并不是每次都会创建一个新的symbol 它会首先检查指定给的key是否已经创建过了，如果已经创建过了，则会直接返回上次存储的那个，否则会再新建一个
+        let s4 = Symbol.for("Unicode");
+        let s5 = Symbol.for("Unicode");
+        console.log(s4);
+        console.log(s5);
+        console.log(s4 === s5);
+
+        // js基本数据类型 (7大基本数据类型)
+        // USONB you are so nb
+        // u:undefined
+        // s:string symbol
+        // o:object
+        // n:null number
+        // b:boolean
+    </script>
+
+</body>
+
+</html>

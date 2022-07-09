@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 原生AJAX
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://www.liulongbin.top:3006/api/getbooks");
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    return console.log(xhr.responseText);
+                } else {
+                    console.error(xhr.status);
+                }
+            }
+        }
+        // 使用Promise包装
+        const p = new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://www.liulongbin.top:3006/api/getbooks");
+            xhr.send();
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // return console.log(xhr.responseText);
+                        resolve(xhr.responseText)
+                    } else {
+                        // console.error(xhr.status);
+                        reject(xhr.status)
+                    }
+                }
+            }
+        }).then((value) => {
+            console.log(value);
+        }).catch((reason) => {
+            console.error(reason);
+        })
+    </script>
+
+</body>
+
+</html>

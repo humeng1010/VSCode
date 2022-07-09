@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // ES6允许给函数参数赋初始值
+        // 1.形参初始值 具有默认值的参数，一般位置要靠后(否则没有意义)
+
+        function add(a, b, c = 10) {
+            return a + b + c;
+        }
+        let result = add(1, 2, 3);
+        console.log(result);
+
+        // 与解构赋值结合使用
+        function connent({ host = "127.0.0.1", username, password, port }) {
+            console.log(host);
+            console.log(username);
+            console.log(password);
+            console.log(port);
+            console.log("连接成功");
+
+        }
+        connent({
+            // host: "127.0.0.1",
+            username: "root",
+            password: "123456",
+            port: 3306
+        })
+
+    </script>
+
+</body>
+
+</html>
