@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        * {
+            margin: 20px;
+        }
+
+        .demo1 {
+            height: 50px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        vue中的事件修饰符
+            1.prevent：阻止默认事件（常用）
+            2.stop：阻止事件冒泡（常用）
+            3.once：事件只触发一次（常用）
+
+     -->
+    <div id="root">
+        <h1>{{name}}</h1>
+        <!-- 1.prevent：阻止默认事件（常用） -->
+        <a href="http://www.baidu.com" @click.prevent="showInfo">{{name}}</a>
+        <!-- 2.stop：阻止事件冒泡（常用） -->
+        <!-- 点击div中的按钮会出现两次弹框 事件冒泡（点击内部的，会依次从内到外执行） -->
+        <div class="demo1" @click="showInfo">
+            <button @click.stop="showInfo">点我提示信息</button>
+        </div>
+        <!-- 3.once：事件只触发一次（常用） -->
+        <button @click.once="showInfo">点我提示信息</button>
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: "#root",
+            data() {
+                return {
+                    name: "百度一下"
+                }
+            },
+            methods: {
+                showInfo(e) {
+                    // e.preventDefault();//阻止事件默认行为 我们可以在@click后添加.prevent简化
+                    // e.stopPropagation();//阻止冒泡弹出
+                    alert("百度!")
+
+                },
+            },
+        })
+    </script>
+
+</body>
+
+</html>

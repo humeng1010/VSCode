@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>hello {{name}}</h2>
+        <!-- <button v-on:click="showInfo">点击我提示信息</button> -->
+        <button @click="showInfo1">点击我提示信息1</button>
+        <button @click="showInfo2($event,66)">点击我提示信息2</button>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: "#root",
+            data() {
+                return {
+                    name: "vue",
+                }
+            },
+            methods: {
+                showInfo1(event) {
+                    // console.log(event);
+                    alert("别点了1");
+                },
+                showInfo2(e, id) {
+                    // 案例点击删除按钮后传给我们id
+                    console.log(e, id);
+                    // alert("别点了2");
+                },
+
+            },
+        })
+    </script>
+
+</body>
+
+</html>
