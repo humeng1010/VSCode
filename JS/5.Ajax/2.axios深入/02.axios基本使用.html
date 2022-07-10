@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./lib/bootstrap.css">
+    <script src="./lib/node_modules/axios/dist/axios.js"></script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="page-header">
+            基本使用
+        </div>
+        <button type="button" class="btn btn-primary">发送GET请求</button>
+        <button type="button" class="btn btn-danger">发送POST请求</button>
+        <button type="button" class="btn btn-success">发送PUT请求</button>
+        <button type="button" class="btn btn-warning">发送DELETE请求</button>
+    </div>
+
+    <script>
+        // 获取按钮
+        const btns = document.querySelectorAll("button");
+
+        // GET
+        btns[0].addEventListener("click", function () {
+            // 发送ajax请求
+            axios({
+                method: "GET",
+                url: "http://localhost:3000/posts/2"
+            }).then(res => {
+                console.log(res);
+            })
+        });
+
+        // POST 添加
+        btns[1].addEventListener("click", function () {
+            // 发送ajax请求
+            axios({
+                method: "POST",
+                url: "http://localhost:3000/posts",
+                data: {
+                    title: "今天天气不错",
+                    author: "张老三"
+
+                }
+            }).then(res => {
+                console.log(res);
+            })
+        })
+
+        // PUT 更新
+        btns[2].addEventListener("click", function () {
+            // 发送ajax请求
+            axios({
+                method: "PUT",
+                url: "http://localhost:3000/posts/3",
+                data: {
+
+                    title: "今天天气不错",
+                    author: "李四"
+
+                }
+            }).then(res => {
+                console.log(res);
+            })
+        })
+
+
+        // DELETE 删除
+        btns[3].addEventListener("click", function () {
+            // 发送ajax请求
+            axios({
+                method: "delete",
+                url: "http://localhost:3000/posts/4",
+            }).then(res => {
+                console.log(res);
+            })
+        })
+
+    </script>
+
+
+
+</body>
+
+</html>
