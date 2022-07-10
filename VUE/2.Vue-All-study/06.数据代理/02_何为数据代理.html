@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 通过两个对象都可以操作x
+        // 让obj2代理obj的x，当我们修改obj的x obj2的x也发生变化 当我们修改obj2的x obj的x也发生变化
+        let obj = {
+            x: 100
+        };
+
+        let obj2 = {
+            y: 200
+        };
+        // 以后有人通过obj2访问x的时候访问的其实是Obj的x，有人修改obj2的x的时候修改的其实是obj的x 然后获取obj2的x其实就是obj的x  循环...
+        Object.defineProperty(obj2, "x", {
+            get() {
+                return obj.x;
+            },
+            set(value) {
+                obj.x = value;
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

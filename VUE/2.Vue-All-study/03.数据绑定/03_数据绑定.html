@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        单项数据绑定:
+        <input type="text" :value="msg">
+        <br>
+        双向数据绑定:
+        <!-- <input type="text" v-model:value="msg"> -->
+        <input type="text" v-model="msg">
+        <br>
+
+        <div v-text="tips">
+        </div>
+        <div>v-model:value可以简写为v-model,因为v-model默认收集的就是value的值</div>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: "#root",
+            data: {
+                msg: "hello vue",
+                tips: "你可以用 v-model 指令在表单 <input>、<textarea> 及 <select> 元素上创建双向数据绑定" +
+                    "1.单项绑定(v-bind)数据只能从data流向页面      2.双向绑定(v-model)数据不仅可以从data流向页面，而且还可以从输入框流向数据data",
+            }
+        })
+    </script>
+
+</body>
+
+</html>
