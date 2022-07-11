@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <!-- vue devtools 比较懒 当我们数据改变了而页面没有发生改变开发者工具就不会更新数据 2022年07月11日15:22:21 -->
+        <h1>今天天气很{{day}}</h1>
+        <input type="button" value="切换天气" @click="change">
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: "#root",
+            data() {
+                return {
+                    isHot: true,
+                }
+            },
+            methods: {
+                change() {
+                    this.isHot = !this.isHot;
+                }
+
+            },
+            computed: {
+                day() {
+                    return this.isHot ? "炎热" : "凉爽";
+                }
+
+            },
+        })
+    </script>
+
+</body>
+
+</html>
