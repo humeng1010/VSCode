@@ -81,6 +81,14 @@
             <li>4</li>
         </ul>
 
+        <!-- 补充 -->
+        <!-- 事件修饰符的链式调用 -->
+        <!-- 先阻止冒泡，在阻止a标签默认跳转 -->
+        <div class="demo1" @click="showInfo">
+            <a href="https://www.baidu.com" @click.stop.prevent="showInfo">百度</a>
+        </div>
+
+
     </div>
 
     <script>
@@ -96,8 +104,8 @@
                 showInfo(e) {
                     // e.preventDefault();//阻止事件默认行为 我们可以在@click后添加.prevent简化
                     // e.stopPropagation();//阻止冒泡弹出
-                    // alert("百度!")
-                    console.log(e.target);
+                    alert("百度!")
+                    // console.log(e.target);
 
                 },
                 showMsg(msg) {
