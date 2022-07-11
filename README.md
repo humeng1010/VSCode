@@ -1,5 +1,10 @@
-# VScode
+# Project
 
-#### 介绍
-学习前端，目标全栈！
+#### Description
+1. HTML+CSS+JS
+
+2. jQuery+ECharts+Ajax+nodejs+ES6
+
+3. Vue
+
 
