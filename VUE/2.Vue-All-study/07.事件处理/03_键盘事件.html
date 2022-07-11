@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        vue中常用的按键别名
+            回车 => enter
+            删除 => delete
+            退出 => esc
+            空格 => space
+            换行 => tab(特殊，必须配合keydown使用，因为有冲突)
+            上下左右 => up down left right
+        vue没有提供别名的按键，可以使用原始的key的值去绑定，但是要注意要转换为 caps-lock(原始为:CapsLock) 短横线命名
+     -->
+    <div id="root">
+        <h2>hello,{{name}}</h2>
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+        <input type="text" placeholder="按ctrl+y提示输入" @keyup.ctrl.y="showInfo">
+        <input type="text" placeholder="按下大小写提示输入" @keyup.caps-lock="showInfo">
+        <input type="text" placeholder="按下Tab提示输入" @keydown.tab="showInfo">
+        <!-- <input type="text" placeholder="按下Tab提示输入" @keydown.tab="showInfo"> -->
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+
+        new Vue({
+            el: "#root",
+            data() {
+                return {
+                    name: "vue"
+                }
+            },
+            methods: {
+                showInfo(e) {
+                    console.log(e.target.value);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
