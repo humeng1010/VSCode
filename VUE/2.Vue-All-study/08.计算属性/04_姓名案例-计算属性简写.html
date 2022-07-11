@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="firstName"><br>
+        名：<input type="text" v-model="lastName">
+        <!-- 计算属性 -->
+        <h2>全名：{{fullName}}</h2>
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: "#root",
+            // data中放的是属性和值
+            data() {
+                return {
+                    firstName: "姓氏",
+                    lastName: "名字"
+                }
+            },
+            // 计算属性就是拿data中的属性进行计算然后得到的值
+            computed: {
+                // 如果计算属性只读不改，可以简写为
+                // 直接把fullName写成函数(原本是对象) 这个函数就代表原本对象中的getter
+                // 补充注意：这个函数中的this就是vue对象的this 不用我们再拷贝this了 vue在这里进行了内部修改 方便开发人员编码
+                fullName() {
+                    return this.firstName + "-" + this.lastName;
+
+                }
+                // fullName: {
+                //     get() {
+                //         // console.log("get调用");
+                //         return this.firstName + "-" + this.lastName;
+                //     },
+                //     set(value) {
+                //         // console.log("set调用", value);
+                //         const name = value.split("-");
+                //         this.firstName = name[0];
+                //         this.lastName = name[1];
+                //     }
+                // }
+
+            },
+        })
+    </script>
+
+</body>
+
+</html>

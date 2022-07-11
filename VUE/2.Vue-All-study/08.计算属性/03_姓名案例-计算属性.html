@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+                            总结
+        计算属性：
+            1.定义：需要的属性不存在，需要通过自己已有的属性计算获得
+            2.原理：底层借助了Object.defineproperty()的方法提供getter和setter
+            3.get函数什么时候被调用?
+                1.初次读取fullName的时候get会被调用 然后缓存这个属性，只要依赖的数据不发生变化之后都可以使用 
+                2.所依赖的数据发生变化时fullName会被调用
+            4.优势：
+                与methods相比，内部有缓存机制(复用)，效率更高，调试更方便
+            5.备注：
+                1.计算属性最终会出现在vm身上，直接读取使用即可
+                2.如果计算属性的值需要修改，必须得写setter去响应修改，而且set中要引起计算属性所依赖的值发生改变!
+     -->
+    <div id="root">
+        姓：<input type="text" v-model="firstName"><br>
+        名：<input type="text" v-model="lastName">
+        <!-- 计算属性 -->
+        <h2>全名：{{fullName}}</h2>
+        <h2>全名：{{fullName}}</h2>
+        <h2>全名：{{fullName}}</h2>
+        <h2>全名：{{fullName}}</h2>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: "#root",
+            // data中放的是属性和值
+            data() {
+                return {
+                    firstName: "姓氏",
+                    lastName: "名字"
+                }
+            },
+            // 计算属性就是拿data中的属性进行计算然后得到的值
+            computed: {
+                fullName: {
+                    // get有什么作用？
+                    //  1.当有人读取fullName的时候，get就会被调用，且返回值就作为fullName的值
+                    // get什么时候被调用? 
+                    //  1.初次读取fullName的时候get会被调用 然后缓存这个属性，只要依赖的数据不发生变化之后都可以使用 
+                    //  2.所依赖的数据发生变化时fullName会被调用
+                    get() {
+                        console.log("get调用");
+                        return this.firstName + "-" + this.lastName;
+                    },
+                    // set什么时候调用？当计算属性fullName被修改时
+                    // 当我们修改vue实例对象身上的fullName的时候 -> set会被调用执行代码(修改vm属性值vm值被修改了调用set方法修改_data中的属性值引起data数据改变) -> fullName所依赖的属性值发生改变再次调用get得到计算属性值 并缓存一份。
+                    set(value) {
+                        console.log("set调用", value);
+                        const name = value.split("-");
+                        // 修改vm身上的属性 通过这个属性的set修改_data的属性
+                        this.firstName = name[0];
+                        this.lastName = name[1];
+                    }
+                }
+            },
+            methods: {
+                // fullName() {
+                //     console.log("@---fullName");
+                //     return this.firstName.substring(0, 3) + "-" + this.lastName;
+                // }
+            },
+
+        })
+    </script>
+
+</body>
+
+</html>
