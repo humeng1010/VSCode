@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        * {
+            margin: 5px;
+            padding: 5px;
+        }
+
+        .defaultStyle {
+            font-size: 10px;
+        }
+
+        .c1 {
+            font-size: 20px;
+            color: royalblue;
+        }
+
+        .c2 {
+            background-color: pink;
+
+        }
+
+        .c3 {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <button>
+            <div class="" :class="style" @click="changeStyle">点击切换随机样式(字符串写法，适用于：样式的类名不确定，需要随机指定)</div>
+        </button>
+
+        <br><br><br>
+
+        <div class="defaultStyle" :class="classArr">
+            点击切换随机样式(数组写法，适用于：要绑定样式的个数不确定、名字也不确定)
+            <br>
+            <button @click="addC1">绑定c1</button>
+            <button @click="addC2">绑定c2</button>
+            <button @click="addC3">绑定c3</button>
+            <br>
+            <button @click="ctrlZ">撤销</button>
+        </div>
+
+        <br><br><br>
+
+        <div class="defaultStyle" :class="tryStyle">
+            点击按钮尝试样式 再次点击取消(对象写法，适用于：要绑定样式的个数不确定、名字也不确定、但是要决定要不要使用)
+            <button @click="tryC1">c1</button>
+            <button @click="tryC2">c2</button>
+            <button @click="tryC3">c3</button>
+        </div>
+
+        <br><br><br>
+
+        <!-- 绑定style对象 -->
+        <!-- <div :style=" 'font-size:' + fSize">{{tryStyle.c1}}</div> -->
+        <div :style="styleObj">{{tryStyle.c1}}</div>
+    </div>
+
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: "#root",
+            data() {
+                return {
+                    style: "defaultStyle",
+                    classArr: [],//后续操作这个数组即可 shift()删除最后一个  或者  push()添加
+                    tryStyle: {
+                        c1: false,
+                        c2: false,
+                        c3: false,
+                    },
+                    styleObj: {
+                        fontSize: "40px",
+                    }
+                }
+            },
+            methods: {
+                changeStyle() {
+                    const arr = ["c1", "c2", "c3"];
+                    const index = Math.floor(Math.random() * 3);
+                    // console.log(index);
+                    this.style = arr[index];
+
+                },
+                addC1() {
+                    this.classArr.push("c1");
+                },
+                addC2() {
+                    this.classArr.push("c2");
+                },
+                addC3() {
+                    this.classArr.push("c3");
+                },
+                ctrlZ() {
+                    if (this.classArr.length === 0) {
+                        alert("不能撤销了")
+                    }
+                    this.classArr.pop()
+                },
+                tryC1() {
+                    this.tryStyle.c1 = !this.tryStyle.c1;
+                },
+                tryC2() {
+                    this.tryStyle.c2 = !this.tryStyle.c2;
+
+                },
+                tryC3() {
+                    this.tryStyle.c3 = !this.tryStyle.c3;
+
+                },
+            },
+        })
+    </script>
+
+</body>
+
+</html>
