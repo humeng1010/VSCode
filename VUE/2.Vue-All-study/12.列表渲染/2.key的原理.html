@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>key的原理</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        总结:
+        vue中的key有什么作用？(key的内部原理)
+            1.虚拟DOM中的key的作用：
+                key是虚拟DOM对象的标识，当数据发生变化的时候，Vue会根据[新数据]生成[新的虚拟DOM]，随后Vue进行
+                [新虚拟DOM]与[旧虚拟DOM]的差异化比较，比较规则如下：
+            2.对比规则：
+                1.旧虚拟DOM中找到了与新虚拟DOM相同的key：
+                    ①虚拟DOM中的内容没有变，直接使用之前的真实DOM
+                    ②虚拟DOM中的内容改变了，则生成新的真实DOM，随后替换掉页面上的之前的真实DOM
+                2.旧虚拟DOm中未找到与新虚拟DOM中相同的key:
+                    创建新的真实DOM，随后渲染到页面
+            3.用index作为key可能会引发的问题：
+                1.若对数据进行逆序添加，逆序删除，等破坏顺序的操作：
+                    会产生没有必要的真实DOM的更新 ==> 页面效果没有问题，但是效率低
+                2.如果结构中还包括输入类的DOM
+                    会产生错误DOM的更新 ==> 界面出现问题
+
+            4.开发中如何选择key?
+                最好使用每一条数据的唯一标识作为key
+                如果不存在对数据的逆序添加，逆序删除等破坏顺序的操作，使用index是作为key是没有问题的
+     -->
+    <!-- 
+        key:如果我们不写key vue会给我们补充一个key而且key的值为index
+        虚拟DOM对比算法(diff算法) 
+        根据虚拟DOM标签中的key对比标签内容 
+            index:当我们key用的是index的时候 我们想在列表的前面插入数据 导致index发生错位 只要是标签内不一样的都会重新生成真实DOM
+            id:当我们key用的是数据的id唯一标识的时候 每一条数据对应一个id 在前面插入数据的时候 对比key 发现原先的虚拟DOM中没有这个key 就会生成真实DOM 如果有这个key则会复用之前的真实DOM
+        https://www.bilibili.com/video/BV1Zy4y1K7SH?p=30&t=631.1
+     -->
+    <div id="root">
+        <h2>人员列表</h2>
+        <!-- 遍历数组 -->
+        <button @click.once="add">添加一个老六</button>
+
+        <table style="border: 1px solid black ;">
+            <thead>
+                <th>msg</th>
+                <th>inp</th>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in persons" :key="item.id">
+                    <td>{{index}}:{{item.name}}-{{item.age}}-{{item.gender}}</td>
+                    <td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- <ul>
+            <li v-for="(item,index) in persons" :key="item.id">
+                {{index}}:{{item.name}}-{{item.age}}-{{item.gender}}
+                <input type="text">
+            </li>
+        </ul> -->
+
+
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: "#root",
+            data() {
+                return {
+                    persons: [
+                        {
+                            id: "001",
+                            name: "李四",
+                            age: 20,
+                            gender: "男",
+                        },
+                        {
+                            id: "002",
+                            name: "张三",
+                            age: 22,
+                            gender: "男",
+                        },
+                        {
+                            id: "003",
+                            name: "王五",
+                            age: 19,
+                            gender: "男",
+                        },
+                    ],
+
+                }
+            },
+            methods: {
+                add() {
+                    const p = { id: "004", name: "老六", age: 40, gender: "男" };
+                    this.persons.unshift(p);
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>

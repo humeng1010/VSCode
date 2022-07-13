@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>人员列表</h2>
+        <input type="text" v-model="keyWord">
+        <ul>
+            <li v-for="(item,index) in fliPersons" :key="index">
+                {{index}}:{{item.name}}-{{item.age}}-{{item.gender}}
+            </li>
+        </ul>
+
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        //用watch实现
+        /*const vm = new Vue({
+            el: "#root",
+            data() {
+                return {
+                    keyWord: "",
+                    persons: [
+                        {
+                            id: "001",
+                            name: "马冬梅",
+                            age: 20,
+                            gender: "女",
+                        },
+                        {
+                            id: "002",
+                            name: "周冬雨",
+                            age: 22,
+                            gender: "女",
+                        },
+                        {
+                            id: "003",
+                            name: "周杰伦",
+                            age: 23,
+                            gender: "男",
+                        },
+                        {
+                            id: "004",
+                            name: "麦哲伦",
+                            age: 43,
+                            gender: "男",
+                        },
+                    ],
+                    fliPersons: [],
+                }
+            },
+            watch: {
+                keyWord: {
+                    immediate: true,//加载页面后直接调用
+                    handler(val) {
+                        // console.log(val);
+                        this.fliPersons = this.persons.filter((p) => {
+                            return p.name.indexOf(val) !== -1
+                        })
+                    },
+
+                }
+            },
+        })*/
+        //用computed实现
+        const vm = new Vue({
+            el: "#root",
+            data() {
+                return {
+                    keyWord: "",
+                    persons: [
+                        {
+                            id: "001",
+                            name: "马冬梅",
+                            age: 20,
+                            gender: "女",
+                        },
+                        {
+                            id: "002",
+                            name: "周冬雨",
+                            age: 22,
+                            gender: "女",
+                        },
+                        {
+                            id: "003",
+                            name: "周杰伦",
+                            age: 23,
+                            gender: "男",
+                        },
+                        {
+                            id: "004",
+                            name: "麦哲伦",
+                            age: 43,
+                            gender: "男",
+                        },
+                    ],
+
+                }
+            },
+            computed: {
+                fliPersons() {
+                    return this.persons.filter(p => {
+                        return p.name.indexOf(this.keyWord) !== -1
+                    })
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>

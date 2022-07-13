@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>人员列表</h2>
+        <!-- 只要保证这个:key的值是不一样的就可以了 -->
+        <!-- <ul v-for="(item,index) in list" :key="item.id"> -->
+        <!-- 遍历数组 -->
+        <ul>
+            <li v-for="(item,index) in persons" :key="index">
+                {{index}}:{{item.name}}-{{item.age}}-{{item.gender}}
+            </li>
+        </ul>
+
+        <h2>汽车信息</h2>
+        <!-- 遍历对象 -->
+        <ul>
+            <li v-for="(c, index) in car" :key="index">
+                {{index}}-{{c.name+'-'+c.pirce+'-'+c.color}}
+            </li>
+        </ul>
+
+        <h2>测试遍历字符串</h2>
+        <!-- 遍历字符串 -->
+        <ul>
+            <li v-for="(str, index) in strs" :key="index">
+                {{index}}-{{str}}
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        const vm = new Vue({
+            el: "#root",
+            data() {
+                return {
+                    persons: [
+                        {
+                            id: "001",
+                            name: "李四",
+                            age: 20,
+                            gender: "男",
+                        },
+                        {
+                            id: "002",
+                            name: "张三",
+                            age: 22,
+                            gender: "男",
+                        },
+                        {
+                            id: "003",
+                            name: "王五",
+                            age: 19,
+                            gender: "男",
+                        },
+                    ],
+                    car: {
+                        a8: {
+                            name: "奥迪A8",
+                            pirce: "80w",
+                            color: "蓝色",
+                        },
+                        a9: {
+                            name: "奥迪A9",
+                            pirce: "90w",
+                            color: "蓝色",
+                        },
+                        a10: {
+                            name: "奥迪A10",
+                            pirce: "100w",
+                            color: "蓝色",
+                        }
+
+                    },
+                    strs: "hello vue"
+
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
