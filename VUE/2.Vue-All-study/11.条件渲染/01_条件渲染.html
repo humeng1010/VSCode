@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+
+        <!-- 使用v-show指令做条件渲染 
+            原理操作元素的style中的display:none 
+            使用时机:元素切换频率 高 的时候使用
+        -->
+        <!-- <h2 v-show="true">欢迎使用{{name}}</h2> -->
+        <!-- <h2 v-show="1===1">欢迎使用{{name}}</h2> -->
+
+        <!-- 使用v-if指令做条件渲染 
+            原理操作dom元素直接删除该元素
+            使用时机:元素切换频率 低 的时候使用
+         -->
+        <!-- <h2 v-if="false">欢迎使用{{name}}</h2> -->
+        <!-- <h2 v-if="1 === 1">欢迎使用{{name}}</h2> -->
+
+        <h2>当前的n的值为{{n}}</h2>
+        <button @click="n++">点击我n+1</button>
+        <!-- <div v-show="n===1">c++</div>
+        <div v-show="n===2">java</div>
+        <div v-show="n===3">javascript</div> -->
+
+        <!-- v-if v-else-if v-else
+            小细节:如果v-if满足条件 那么v-else-if就会不执行直接跳过(区别与都使用v-if) 如果条件都不满足则一直都是v-else
+        -->
+        <!-- <div v-if="n===1">c++</div>
+        <div v-else-if="n===2">java</div>
+        <div v-else-if="n===3">javascript</div>
+        <div v-else>else</div> -->
+
+        <!-- template渲染后是不存在的不会破坏原本的css的样式结构
+            注意template只能和v-if配合使用 不能和v-show配合进行条件渲染 因为template渲染后是不存在的 v-show就找不到该元素结点进行display:none
+        -->
+        <template v-if="n===1">
+            <h2>你好</h2>
+            <h2>Vue</h2>
+            <h2>2</h2>
+        </template>
+
+
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: "#root",
+            data() {
+                return {
+                    name: "Vue",
+                    n: 0,
+
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
