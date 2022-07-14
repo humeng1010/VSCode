@@ -23,19 +23,15 @@
                 joke: "笑话"
             },
             methods: {
-                getjoke: function () {
+                async getjoke() {
                     // 由于axios内的this会发送改变 所以我们先存一份，然后再axios中
-                    var that = this;
-                    axios({
+                    // var that = this;
+                    const res = await axios({
                         method: "GET",
                         url: "https://autumnfish.cn/api/joke",
-                        params: {}
-                    }).then(function (res) {
-                        // console.log(res.data);
-                        that.joke = res.data
-                    }, function (err) {
-                        console.log(err);
-                    })
+                    });
+                    this.joke = res.data
+
                 }
             }
         })
