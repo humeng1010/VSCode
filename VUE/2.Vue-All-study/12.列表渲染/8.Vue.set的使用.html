@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <button @click="addLeader">点击添加校长</button>
+        <h2 v-if="school.leader">校长:{{school.leader}}</h2>
+        <h2>学校名称:{{school.name}}</h2>
+        <h2>学校地址:{{school.address}}</h2>
+        <hr>
+        <h1>学生信息</h1>
+        <button @click="addGender">添加性别属性，默认男</button>
+        <h2>姓名:{{student.name}}</h2>
+        <h2 v-if="student.gender">性别:{{student.gender}}</h2>
+        <h2>年龄:{{student.age}}</h2>
+        <hr>
+        <h2>朋友</h2>
+        <ul>
+            <li v-for="(friend, index) in student.friends" :key="index">
+                {{friend.name}}--{{friend.age}}
+            </li>
+        </ul>
+
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: "#root",
+            data() {
+                return {
+                    school: {
+                        name: "尚硅谷",
+                        address: "北京",
+                    },
+                    student: {
+                        name: "张三",
+                        age: 20,
+                        friends: [
+                            {
+                                name: "李四",
+                                age: 20,
+                            },
+                            {
+                                name: "王五",
+                                age: 20,
+                            },
+
+                        ]
+                    }
+                }
+            },
+            methods: {
+                addGender() {
+                    Vue.set(this.student, "gender", "男");
+                    // this.$set(this.student, "gender", "男");
+                },
+                addLeader() {
+                    // this.$set(this._data, "leader", "王校长");//不允许向vue本身或者_data的根节点数据上添加响应式的数据
+                    this.$set(this.school, "leader", "王校长")
+
+                }
+            },
+        })
+    </script>
+
+</body>
+
+</html>
