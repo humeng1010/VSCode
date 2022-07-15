@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <h2>当前的值为:{{n}}</h2>
+        <button @click="add">点击我n+1</button>
+        <button @click="bye">点击我销毁vm</button>
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        new Vue({
+            el: "#root",
+            data() {
+                return {
+                    n: 1
+                }
+            },
+            methods: {
+                add() {
+                    console.log("add");
+                    this.n++;
+                },
+                bye() {
+                    console.log("bye");
+                    // 完全销毁一个实例。清理 它与其它实例的连接，解绑它的全部指令以及 自定义事件监听器。
+                    this.$destroy();
+                }
+            },
+            watch: {
+                n() {
+                    console.log(`n变了:${this.n}`);
+                }
+            },
+            beforeCreate() {
+                console.log("beforeCreate");
+            },
+            created() {
+                console.log("created");
+            },
+
+            beforeMount() {
+                console.log("beforeMount");
+
+            },
+            mounted() {
+                console.log("mounted");
+            },
+
+            beforeUpdate() {
+                // 此时数据时新的，但页面是旧的，即页面尚未和数据保持同步
+                console.log("beforeUpdate");
+                // console.log(this.n);
+                // debugger;
+            },
+            updated() {
+                // 此时数据是新的，页面也是新的，即页面和数据保持同步
+                console.log("updated");
+                // console.log(this.n);
+                // debugger;
+            },
+
+            beforeDestroy() {
+                // 进行收尾操作：关闭定时器、取消订阅消息、解绑自定义事件、等。
+                // 注意此时的vm中的data和methods、指令等等、都处于可用状态，但是要注意，再进行数据修改也不会回去进行update操作了，也就无法更新页面了
+                console.log("beforeDestroy");
+                console.log(this.n);
+                this.n = 99;
+                debugger;
+            },
+            destroyed() {
+                console.log("destroyed");
+            },
+        })
+    </script>
+
+</body>
+
+</html>
