@@ -52,3 +52,52 @@ new Vue({
     ```js
     this.$refs.xxx
     ```
+
+## 配置项props
+
+1. 功能让组件接收外部传过来的数据
+
+    1. 传递数据
+
+        ```html
+        <Demo name="xxx"/>
+        ```
+    
+    2. 接收数据
+
+      - 第一种方式：只接收 
+      
+            props:["name"]
+
+      - 第二种方式：限制类型 
+
+             props:{
+
+              name:String,
+
+            }
+
+      - 第三中方式：限制类型 限制必要性 指定默认值
+
+            props:{
+              name:{
+                type:String,//类型
+                required:true,//必要性
+                default:"老王",//默认值
+              }
+            }
+
+      3. 备注:props是只读的，Vue底层会监视你对props的修改，如果对props进行了修改，就会发出警告，如果业务确实需要修改，那么就复制props的内容到data中一份，然后进行修改数据。(props上的数据优先被放到vc上 data这个地方才能用this读取prop)
+
+    ```javascript
+        data() {
+          return {
+              msg: "我是尚硅谷的学生",
+              // props上的数据优先被放到vc上 这个地方才能用this读取prop
+              myName: this.name,
+              myGender: this.gender,
+              myAge: this.age,
+          };
+        },
+
+    ```
