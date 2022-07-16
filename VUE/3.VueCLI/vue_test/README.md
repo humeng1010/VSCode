@@ -101,3 +101,48 @@ new Vue({
         },
 
     ```
+
+## mixin(混入)
+  1. 功能：可以把多个组件共用的配置提取成一个混入对象
+  2. 使用方法:
+      - 第一步：定义混合,例如:
+          ```js
+              exprot const mixin = {
+                data(){
+                  ...//在混入区添加上data数据 优先使用本身上的
+                },
+                methods(){
+                  ...
+                },
+                mounted(){
+                  ...//钩子函数会都执行 先执行混合中的
+                },
+              };
+              exprot const mixin2 = {
+                data(){
+                  ...//在混入区添加上data数据 优先使用本身上的
+                },
+                methods(){
+                  ...
+                },
+                mounted(){
+                  ...//钩子函数会都执行 先执行混合中的
+                },
+              };
+
+
+          ```
+      - 第二步：使用混入，例如:
+          ```js
+              //局部混入
+              //1.先引入 import {xxx} from ".."
+              mixins:[xxx,xxx]
+
+              //全局混入
+              //1.先引入 import {xxx} from ".."
+              Vue.mixin(xxx)
+              Vue.mixin(xxx)
+
+          ```
+
+## Vue插件
