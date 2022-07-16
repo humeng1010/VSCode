@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+
+<body>
+    <div id="root">
+    </div>
+
+    <script>
+        Vue.config.productionTip = false;
+        const s1 = Vue.extend({
+            name: "student1",
+            template: `
+            <div>
+                <h2>我是子组件-{{n}}</h2>
+            </div>
+
+            `,
+            data() {
+                return {
+                    n: 1,
+                }
+            },
+        });
+        const s2 = Vue.extend({
+            name: "student2",
+            template: `
+            <div>
+                <h2>我是子组件-{{n}}</h2>
+            </div>
+
+            `,
+            data() {
+                return {
+                    n: 2,
+                }
+            },
+        });
+
+        const app = Vue.extend({
+            name: "app",//vue开发者工具里面的名称
+            template: `
+            <div>
+                <s1></s1>
+                <s2></s2>
+            </div>
+            `,
+            components: {
+                s1,
+                s2,
+            }
+        });
+
+
+        new Vue({
+            template: `<app></app>`,
+            el: "#root",
+            components: {
+                app,
+            },
+        })
+    </script>
+
+</body>
+
+</html>
