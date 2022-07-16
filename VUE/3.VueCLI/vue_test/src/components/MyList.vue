@@ -11,15 +11,7 @@ export default {
   components: {
     MyItem,
   },
-  data() {
-    return {
-      todos: [
-        { id: "001", title: "吃饭", done: true },
-        { id: "002", title: "睡觉", done: false },
-        { id: "003", title: "打游戏", done: false },
-      ],
-    };
-  },
+  props: ["todos"],
 };
 </script>
 

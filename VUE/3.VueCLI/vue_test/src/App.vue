@@ -2,8 +2,8 @@
   <div id="root">
     <div class="todo-container">
       <div class="todo-wrap">
-        <MyHeader></MyHeader>
-        <MyList></MyList>
+        <MyHeader :addTodo="addTodo"></MyHeader>
+        <MyList :todos="todos"></MyList>
         <MyFooter></MyFooter>
       </div>
     </div>
@@ -20,6 +20,21 @@ export default {
     MyHeader,
     MyList,
     MyFooter,
+  },
+  data() {
+    return {
+      todos: [
+        { id: "001", title: "吃饭", done: true },
+        { id: "002", title: "睡觉", done: false },
+        { id: "003", title: "打游戏", done: false },
+      ],
+    };
+  },
+  methods: {
+    addTodo(todoObj) {
+      //   console.log(`我是App组件,我收到了`, todoObj);
+      this.todos.unshift(todoObj);
+    },
   },
 };
 </script>

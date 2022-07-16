@@ -18,15 +18,21 @@ export default {
       title: "",
     };
   },
+  props: ["addTodo"],
   methods: {
     add() {
-      //   console.log(this.title);
+      // 校验数据
+      if (!this.title.trim()) return;
+      //   包装对象
       const todoObj = {
         id: nanoid(),
         title: this.title,
         done: false,
       };
-      console.log(todoObj);
+      //   通知App组件添加todo对象
+      this.addTodo(todoObj);
+      // 清空输入
+      this.title = "";
     },
   },
 };
