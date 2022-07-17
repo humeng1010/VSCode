@@ -3,8 +3,16 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader :addTodo="addTodo"></MyHeader>
-        <MyList :todos="todos"></MyList>
-        <MyFooter></MyFooter>
+        <MyList
+          :todos="todos"
+          :updateDone="updateDone"
+          :deleteTodo="deleteTodo"
+        ></MyList>
+        <MyFooter
+          :todos="todos"
+          :checkAllTodo="checkAllTodo"
+          :clearAllTodo="clearAllTodo"
+        ></MyFooter>
       </div>
     </div>
   </div>
@@ -14,6 +22,7 @@
 import MyHeader from "./components/MyHeader.vue";
 import MyList from "./components/MyList.vue";
 import MyFooter from "./components/MyFooter.vue";
+import { nanoid } from "nanoid";
 export default {
   name: "App",
   components: {
@@ -24,16 +33,38 @@ export default {
   data() {
     return {
       todos: [
-        { id: "001", title: "吃饭", done: true },
-        { id: "002", title: "睡觉", done: false },
-        { id: "003", title: "打游戏", done: false },
+        { id: nanoid(), title: "吃饭", done: true },
+        { id: nanoid(), title: "睡觉", done: false },
+        { id: nanoid(), title: "打豆豆", done: false },
       ],
     };
   },
   methods: {
-    addTodo(todoObj) {
-      //   console.log(`我是App组件,我收到了`, todoObj);
-      this.todos.unshift(todoObj);
+    // 添加
+    addTodo(todo) {
+      this.todos.unshift(todo);
+    },
+    // 勾选
+    updateDone(id) {
+      this.todos.forEach((todo) => {
+        if (todo.id === id) todo.done = !todo.done;
+      });
+    },
+    // 删除
+    deleteTodo(id) {
+      this.todos = this.todos.filter((todo) => todo.id !== id);
+    },
+    // 全选或反选
+    checkAllTodo(done) {
+      this.todos.forEach((todo) => {
+        todo.done = done;
+      });
+    },
+    // 清除完成的todo
+    clearAllTodo() {
+      this.todos = this.todos.filter((todo) => {
+        return !todo.done;
+      });
     },
   },
 };
@@ -46,7 +77,7 @@ body {
 }
 
 .btn {
-  display: inline-block;
+  /* display: inline-block; */
   padding: 4px 12px;
   margin-bottom: 0;
   font-size: 14px;

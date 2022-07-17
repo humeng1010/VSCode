@@ -21,24 +21,22 @@ export default {
   props: ["addTodo"],
   methods: {
     add() {
-      // 校验数据
-      if (!this.title.trim()) return;
-      //   包装对象
-      const todoObj = {
+      if (!this.title.trim()) return alert("请输入内容");
+      const todo = {
         id: nanoid(),
         title: this.title,
         done: false,
       };
-      //   通知App组件添加todo对象
-      this.addTodo(todoObj);
-      // 清空输入
+      // 传入到App中 再由App传到List
+      this.addTodo(todo);
+      //   清空输入框
       this.title = "";
     },
   },
 };
 </script>
 
-<style scoped>
+<style>
 /*header*/
 .todo-header input {
   width: 560px;
