@@ -22,6 +22,7 @@
 import MyHeader from "./components/MyHeader.vue";
 import MyList from "./components/MyList.vue";
 import MyFooter from "./components/MyFooter.vue";
+import { nanoid } from "nanoid";
 export default {
   name: "App",
   components: {
