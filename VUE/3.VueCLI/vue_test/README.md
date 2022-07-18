@@ -1,215 +1,122 @@
-# Vue
+# Vue2笔记
+
+## 脚手架文件结构
+
+	├── node_modules 
+	├── public
+	│   ├── favicon.ico: 页签图标
+	│   └── index.html: 主页面
+	├── src
+	│   ├── assets: 存放静态资源
+	│   │   └── logo.png
+	│   │── component: 存放组件
+	│   │   └── HelloWorld.vue
+	│   │── App.vue: 汇总所有组件
+	│   │── main.js: 入口文件
+	├── .gitignore: git版本管制忽略的配置
+	├── babel.config.js: babel的配置文件
+	├── package.json: 应用包配置文件 
+	├── README.md: 应用描述文件
+	├── package-lock.json：包版本控制文件
 
 ## 关于不同版本的Vue
 
 1. vue.js与vue.runtime.xxx.js的区别：
+    1. vue.js是完整版的Vue，包含：核心功能 + 模板解析器。
+    2. vue.runtime.xxx.js是运行版的Vue，只包含：核心功能；没有模板解析器。
+2. 因为vue.runtime.xxx.js没有模板解析器，所以不能使用template这个配置项，需要使用render函数接收到的createElement函数去指定具体内容。
 
-    - vue.js是完整版的vue，包含：核心功能+模板解析器
-    - vue.runtime.xxx.js是运行版的vue，只包含 核心功能，没有模板解析器
+## vue.config.js配置文件
 
-2. 因为vue.runtime.xxx.js没有模板解析器，所以不能使用template配置项，需要使用render函数接收到的createElement函数去指定具体内容。
-
-```javascript
-/*
-  该文件是整个项目的入口文件
-*/
-// 引入Vue 这个是不完整版的Vue 没有template模板解析
-import Vue from 'vue'
-// 引入App组件 它是所有组件的父组件
-import App from './App.vue'
-// 关闭Vue的生产提示
-Vue.config.productionTip = false
-
-// 创建Vue的实例对象---vm
-new Vue({
-  el: "#app",
-  // 完成了:将app组件放入容器中 这样写是因为我们引入的是不完整版的Vue 没有template模板解析
-  // 完整写法
-  // render(h) {
-  //   return h("h1", "你好呀")
-  //   return h(App)
-  // }
-  // es6箭头函数简化写法
-  render: h => h(App)
-})
-```
+1. 使用vue inspect > output.js可以查看到Vue脚手架的默认配置。
+2. 使用vue.config.js可以对脚手架进行个性化定制，详情见：https://cli.vuejs.org/zh
 
 ## ref属性
 
-1. 被用来给元素或子组件注册引用信息(id的代替者)
+1. 被用来给元素或子组件注册引用信息（id的替代者）
+2. 应用在html标签上获取的是真实DOM元素，应用在组件标签上是组件实例对象（vc）
+3. 使用方式：
+    1. 打标识：```<h1 ref="xxx">.....</h1>``` 或 ```<School ref="xxx"></School>```
+    2. 获取：```this.$refs.xxx```
 
-2. 应用在html标签上获取的是真实的DOM元素，应用在组件标签上是 组件实例对象(vc)
+## props配置项
 
-3. 使用方式:
+1. 功能：让组件接收外部传过来的数据
 
-    - 打标识:
-    ```html
-    <h1 ref="xxx">......</h1>
-    或
-    <School ref="xxx"></School>
-    ```
-    - 获取:
-    ```js
-    this.$refs.xxx
-    ```
+2. 传递数据：```<Demo name="xxx"/>```
 
-## 配置项props
+3. 接收数据：
 
-1. 功能让组件接收外部传过来的数据
+    1. 第一种方式（只接收）：```props:['name'] ```
 
-    1. 传递数据
+    2. 第二种方式（限制类型）：```props:{name:String}```
 
-        ```html
-        <Demo name="xxx"/>
+    3. 第三种方式（限制类型、限制必要性、指定默认值）：
+
+        ```js
+        props:{
+        	name:{
+        	type:String, //类型
+        	required:true, //必要性
+        	default:'老王' //默认值
+        	}
+        }
         ```
-    
-    2. 接收数据
 
-      - 第一种方式：只接收 
-      
-            props:["name"]
-
-      - 第二种方式：限制类型 
-
-             props:{
-
-              name:String,
-
-            }
-
-      - 第三中方式：限制类型 限制必要性 指定默认值
-
-            props:{
-              name:{
-                type:String,//类型
-                required:true,//必要性
-                default:"老王",//默认值
-              }
-            }
-
-      3. 备注:props是只读的，Vue底层会监视你对props的修改，如果对props进行了修改，就会发出警告，如果业务确实需要修改，那么就复制props的内容到data中一份，然后进行修改数据。(props上的数据优先被放到vc上 data这个地方才能用this读取prop)
-
-    ```javascript
-        data() {
-          return {
-              msg: "我是尚硅谷的学生",
-              // props上的数据优先被放到vc上 这个地方才能用this读取prop
-              myName: this.name,
-              myGender: this.gender,
-              myAge: this.age,
-          };
-        },
-
-    ```
+    > 备注：props是只读的，Vue底层会监测你对props的修改，如果进行了修改，就会发出警告，若业务需求确实需要修改，那么请复制props的内容到data中一份，然后去修改data中的数据。
 
 ## mixin(混入)
-  1. 功能：可以把多个组件共用的配置提取成一个混入对象
-  2. 使用方法:
-      - 第一步：定义混合,例如:
-          ```js
-              exprot const mixin = {
-                data(){
-                  ...//在混入区添加上data数据 优先使用本身上的
-                },
-                methods(){
-                  ...
-                },
-                mounted(){
-                  ...//钩子函数会都执行 先执行混合中的
-                },
-              };
-              exprot const mixin2 = {
-                data(){
-                  ...//在混入区添加上data数据 优先使用本身上的
-                },
-                methods(){
-                  ...
-                },
-                mounted(){
-                  ...//钩子函数会都执行 先执行混合中的
-                },
-              };
 
+1. 功能：可以把多个组件共用的配置提取成一个混入对象
 
-          ```
-      - 第二步：使用混入，例如:
-          ```js
-              //局部混入
-              //1.先引入 import {xxx} from ".."
-              mixins:[xxx,xxx]
+2. 使用方式：
 
-              //全局混入
-              //1.先引入 import {xxx} from ".."
-              Vue.mixin(xxx)
-              Vue.mixin(xxx)
+    第一步定义混合：
 
-          ```
+    ```
+    {
+        data(){....},
+        methods:{....}
+        ....
+    }
+    ```
 
-## Vue插件
+    第二步使用混入：
 
-  1. 功能:用于增强Vue
-  
-  2. 本质:包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据
+    ​	全局混入：```Vue.mixin(xxx)```
+    ​	局部混入：```mixins:['xxx']	```
 
-  3. 定义插件:
+## 插件
 
-    plugins.js
+1. 功能：用于增强Vue
 
-  ```js
-        // 插件
-        export default {
-          // install中有个参数 为Vue的缔造者 而且还可以接收Vue.use(),后面传入的参数
-          install(Vue) {
+2. 本质：包含install方法的一个对象，install的第一个参数是Vue，第二个以后的参数是插件使用者传递的数据。
 
-              // 全局过滤器
-              Vue.filter("mySlice", function (value) {
-                  return value.slice(0, 4);
-              });
+3. 定义插件：
 
-              // 定义全局指令
-              Vue.directive("fbind", {
-                  // 指令与元素成功绑定时(一上来)
-                  bind(element, binding) {
-                      element.value = binding.value;
-                  },
-                  // 指令所在元素被插入页面时
-                  inserted(element) {
-                      // 自动获取焦点
-                      element.focus()
-                  },
-                  // 指令所在的模板被重新解析时
-                  update(element, binding) {
-                      element.value = binding.value;
-                  }
-              });
+    ```js
+    对象.install = function (Vue, options) {
+        // 1. 添加全局过滤器
+        Vue.filter(....)
+    
+        // 2. 添加全局指令
+        Vue.directive(....)
+    
+        // 3. 配置全局混入(合)
+        Vue.mixin(....)
+    
+        // 4. 添加实例方法
+        Vue.prototype.$myMethod = function () {...}
+        Vue.prototype.$myProperty = xxxx
+    }
+    ```
 
-              // 定义混入 全局
-              Vue.mixin({
-                  data() {
-                      return {
-                          x: 100,
-                          y: 200,
-                      }
-                  }
-              });
-
-              // 给Vue原型上添加一个方法(vm和vc就都能用了)
-              Vue.prototype.hello = () => { alert("你好呀") };
-          }
-        }
-
-  ```
-
-    4. 使用插件
-
-      Vue.use();
-
+4. 使用插件：```Vue.use()```
 
 ## scoped样式
 
-  1. 作用:让样式在局部生效，防止冲突
-
-  2. 写法< style scoped >
+1. 作用：让样式在局部生效，防止冲突。
+2. 写法：```<style scoped>```
 
 
 ## 总结TodoList案例
