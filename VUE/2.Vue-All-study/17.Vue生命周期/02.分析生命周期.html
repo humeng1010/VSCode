@@ -73,9 +73,9 @@
                 // 进行收尾操作：关闭定时器、取消订阅消息、解绑自定义事件、等。
                 // 注意此时的vm中的data和methods、指令等等、都处于可用状态，但是要注意，再进行数据修改也不会回去进行update操作了，也就无法更新页面了
                 console.log("beforeDestroy");
-                console.log(this.n);
-                this.n = 99;
-                debugger;
+                // console.log(this.n);
+                // this.n = 99;
+                // debugger;
             },
             destroyed() {
                 console.log("destroyed");
