@@ -1,6 +1,7 @@
 <template>
   <div>
     <button @click="isShow = !isShow">显示/隐藏</button>
+    <!-- 使用 -->
     <transition-group
       appear
       name="animate__animated animate__bounce"
@@ -14,6 +15,7 @@
 </template>
 
 <script>
+// 引入第三方库
 import "animate.css";
 export default {
   name: "MyTest",

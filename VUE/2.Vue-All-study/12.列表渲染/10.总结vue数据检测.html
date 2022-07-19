@@ -19,7 +19,7 @@
                     1.对象中后追加的属性，Vue默认不做响应式的处理
                     2.如果需要给后添加的属性做响应式，需要使用如下API:
                         Vue.set(target,propertyName/index,value) 或
-                        vm.$set(target.propertyName/index,value)
+                        vm.$set(target,propertyName/index,value)
 
             3.如何检测数组中的数据？
                 通过包裹数组更新元素的方法实现，本质就是做了两件事：
