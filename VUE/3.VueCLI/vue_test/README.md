@@ -269,5 +269,8 @@
    
    5. 在Vue2中推荐使用<span style="color:red">全局事件总线</span>
 
+## nextTick
 
-
+1. 语法：```this.$nextTick(回调函数)```
+2. 作用：在下一次 DOM 更新结束后执行其指定的回调。
+3. 什么时候用：当改变数据后，要基于更新后的新DOM进行某些操作时，要在nextTick所指定的回调函数中执行。

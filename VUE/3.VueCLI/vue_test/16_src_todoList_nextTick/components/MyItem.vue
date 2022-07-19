@@ -9,9 +9,24 @@
         @change="handlerCheck(todo.id)"
       />
 
-      <span>{{ todo.title }}</span>
+      <span v-show="!todo.isEdit">{{ todo.title }}</span>
+      <!-- @blur 失去焦点事件 -->
+      <input
+        type="text"
+        v-show="todo.isEdit"
+        :value="todo.title"
+        @blur="handlerBlur(todo, $event)"
+      />
     </label>
     <button class="btn btn-danger" @click="handlerDelete(todo.id)">删除</button>
+    <button
+      v-show="!todo.isEdit"
+      class="btn btn-edit"
+      @click="handlerEdit(todo)"
+      ref="inputTitle"
+    >
+      编辑
+    </button>
   </li>
 </template>
 
@@ -30,6 +45,25 @@ export default {
         // this.$bus.$emit("deleteTodo", id);
         pubsub.publish("deleteTodo", id);
       }
+    },
+    handlerEdit(todo) {
+      if (todo.hasOwnProperty("isEdit")) {
+        todo.isEdit = true;
+      } else {
+        // 给todo身上 追加 一个新的响应式的属性
+        this.$set(todo, "isEdit", true);
+      }
+      // setTimeout(() => {
+      //   this.$refs.inputTitle.focus();
+      // });
+      this.$nextTick(() => {
+        this.$refs.inputTitle.focus();
+      });
+    },
+    handlerBlur(todo, e) {
+      todo.isEdit = false;
+      if (!e.target.value.trim()) return alert("输入不能为空");
+      this.$bus.$emit("updateTodo", todo.id, e.target.value);
     },
   },
 };

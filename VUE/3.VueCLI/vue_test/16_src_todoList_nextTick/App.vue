@@ -1,4 +1,14 @@
-<template></template>
+<template>
+  <div id="root">
+    <div class="todo-container">
+      <div class="todo-wrap">
+        <MyHeader></MyHeader>
+        <MyList :todos="todos"></MyList>
+        <MyFooter :todos="todos"></MyFooter>
+      </div>
+    </div>
+  </div>
+</template>
 
 <script>
 import pubsub from "pubsub-js";
