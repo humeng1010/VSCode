@@ -26,20 +26,23 @@ export default {
       n: 1, //用户选择的数字
     };
   },
-  mounted() {
-    // console.log(this.$store);
-  },
   computed: {
-    ...mapState("countAbout", ["sum", "school", "subject"]),
+    // 下面是借助mapState生成计算属性自动创建的 注意需要从vuex中引入mapState
+    // ES6语法
+    // ...mapState({ he: "sum", xuexiao: "school", xueke: "subject" }),
+    // 简写方式 计算属性名 和 仓库中的状态值的名称一样
+    ...mapState(["sum", "school", "subject", "personList"]),
 
-    ...mapState("personAbout", ["personList"]),
-
-    ...mapGetters("countAbout", ["bigSum"]),
+    // 下面是借助mapGetter生成计算属性 自动创建的 注意需要从vuex中引入mapGetters
+    ...mapGetters(["bigSum"]),
   },
   methods: {
-    ...mapMutations("countAbout", ["ADD", "SUB"]),
+    // ...mapMutations({ increment: "ADD", decrement: "SUB" }),
+    // 简写
+    ...mapMutations(["ADD", "SUB"]),
 
-    ...mapActions("countAbout", ["addOdd", "addWait"]),
+    // ...mapActions({ incrementOdd: "addOdd", incrementWait: "addWait" }),
+    ...mapActions(["addOdd", "addWait"]),
   },
 };
 </script>
