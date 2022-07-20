@@ -458,6 +458,10 @@ module.exports = {
 
 ## Vuex
 
+<img src="https://cdn.staticaly.com/gh/redyouzi/images-for-blog@main/img01/vuex.792i56b2zqo0.png" alt="vuex" style="zoom: 33%;" />
+
+
+
 ### 1.概念
 
 		在Vue中实现集中式状态（数据）管理的一个Vue插件，对vue应用中多个组件的共享状态进行集中式的管理（读/写），也是一种组件间通信的方式，且适用于任意组件间通信。
