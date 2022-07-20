@@ -6,9 +6,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>css选择器</title>
+    <style>
+        /* 标签选择器 */
+        h1 {
+            color: skyblue;
+        }
+
+        /* 类选择器 */
+        .red {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+        /* id选择器 */
+        #only {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+        }
+
+        /* 多类名 */
+        .demo1,
+        .demo2 {
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            border: 20px solid black;
+        }
+
+        /* 通配符选择器 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 
 <body>
+    <h1>hello</h1>
+
+    <div class="red"></div>
+
+    <div id="only"></div>
+
+    <div class="demo1"></div>
+    <div class="demo2"></div>
 
 </body>
 
