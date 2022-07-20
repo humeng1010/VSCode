@@ -24,7 +24,10 @@ import { mapActions, mapGetters, mapState } from "vuex";
 export default {
   name: "Person",
   computed: {
-    ...mapState("personAbout", ["personList"]),
+    // ...mapState("personAbout", ["personList"]),
+    personList() {
+      return this.$store.state.personAbout.personList;
+    },
     // ...mapState("countAbout", ["sum"]),
     // ...mapGetters("personAbout", ["firstPersonName"]),
     sum() {
