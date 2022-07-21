@@ -7,10 +7,18 @@
       <div class="col-xs-2 col-xs-offset-2">
         <div class="list-group">
           <!-- replace 替换掉当前的浏览器的历史记录 -->
-          <router-link class="list-group-item" active-class="active" to="/about"
+          <router-link
+            replace
+            class="list-group-item"
+            active-class="active"
+            to="/about"
             >About</router-link
           >
-          <router-link class="list-group-item" active-class="active" to="/home"
+          <router-link
+            replace
+            class="list-group-item"
+            active-class="active"
+            to="/home"
             >Home</router-link
           >
         </div>

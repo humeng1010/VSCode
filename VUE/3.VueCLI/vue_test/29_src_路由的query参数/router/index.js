@@ -30,12 +30,6 @@ export default new VueRouter({
                         {
                             path: "detail",
                             component: Detail,
-                            props($route) {
-                                return {
-                                    id: $route.query.id,
-                                    title: $route.query.title,
-                                }
-                            }
                         }
                     ]
                 }

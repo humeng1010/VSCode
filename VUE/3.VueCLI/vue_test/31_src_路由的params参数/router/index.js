@@ -28,14 +28,9 @@ export default new VueRouter({
                     component: Message,
                     children: [
                         {
-                            path: "detail",
+                            name: "xiangqing",
+                            path: "detail/:id/:title",
                             component: Detail,
-                            props($route) {
-                                return {
-                                    id: $route.query.id,
-                                    title: $route.query.title,
-                                }
-                            }
                         }
                     ]
                 }
