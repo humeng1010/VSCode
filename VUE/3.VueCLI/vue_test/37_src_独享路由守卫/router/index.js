@@ -8,12 +8,10 @@ import Message from '../pages/Message.vue';
 import Detail from '../pages/Detail.vue';
 // 创建并暴露一个路由器
 const router = new VueRouter({
-    // mode: 'history',会把路径中的#号去掉
-    mode: 'history',
     // 当前路由路径
     routes: [
         {
-            meta: { isAuth: true, title: "关于我们" },
+            meta: { title: "关于我们" },
             name: "guanyu",
             path: "/about",
             component: About,
@@ -33,19 +31,19 @@ const router = new VueRouter({
                     path: "news",
                     component: News,
                     // 独享路由守卫 只有前置 没有后置
-                    // beforeEnter(to, from, next) {
-                    //     if (to.meta.isAuth) {
-                    //         if (localStorage.getItem('school') === 'atguigu') {
-                    //             next();
-                    //         } else {
-                    //             alert('学校名称不对');
-                    //             next('/home');
-                    //         }
-                    //     } else {
-                    //         next();
-                    //     }
+                    beforeEnter(to, from, next) {
+                        if (to.meta.isAuth) {
+                            if (localStorage.getItem('school') === 'atguigu') {
+                                next();
+                            } else {
+                                alert('学校名称不对');
+                                next('/home');
+                            }
+                        } else {
+                            next();
+                        }
 
-                    // },
+                    },
 
                 },
                 {
@@ -90,9 +88,9 @@ const router = new VueRouter({
 
 // })
 // 后置路由守卫——初始化的时候被调用 和每次路由切换之 {后} 被调用
-// router.afterEach((to, from) => {
-//     // console.log(to, from);
-//     document.title = to.meta.title || 'VueRunner';
+router.afterEach((to, from) => {
+    // console.log(to, from);
+    document.title = to.meta.title || 'VueRunner';
 
-// })
+})
 export default router;

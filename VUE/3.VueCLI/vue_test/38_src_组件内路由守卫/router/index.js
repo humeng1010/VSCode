@@ -8,8 +8,6 @@ import Message from '../pages/Message.vue';
 import Detail from '../pages/Detail.vue';
 // 创建并暴露一个路由器
 const router = new VueRouter({
-    // mode: 'history',会把路径中的#号去掉
-    mode: 'history',
     // 当前路由路径
     routes: [
         {

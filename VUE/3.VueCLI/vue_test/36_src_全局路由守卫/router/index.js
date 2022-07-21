@@ -8,12 +8,10 @@ import Message from '../pages/Message.vue';
 import Detail from '../pages/Detail.vue';
 // 创建并暴露一个路由器
 const router = new VueRouter({
-    // mode: 'history',会把路径中的#号去掉
-    mode: 'history',
     // 当前路由路径
     routes: [
         {
-            meta: { isAuth: true, title: "关于我们" },
+            meta: { title: "关于我们" },
             name: "guanyu",
             path: "/about",
             component: About,
@@ -25,28 +23,12 @@ const router = new VueRouter({
             component: Home,
             children: [
                 {
-
                     // 路由元信息 $route身上给程序员使用的一个对象 配置一个路由守卫是否放行的标志
                     meta: { isAuth: true, title: "新闻" },
                     name: "xinwen",
                     // 二级路由的path要么写全，要么只写news 不用加/ 因为默认是/news
                     path: "news",
                     component: News,
-                    // 独享路由守卫 只有前置 没有后置
-                    // beforeEnter(to, from, next) {
-                    //     if (to.meta.isAuth) {
-                    //         if (localStorage.getItem('school') === 'atguigu') {
-                    //             next();
-                    //         } else {
-                    //             alert('学校名称不对');
-                    //             next('/home');
-                    //         }
-                    //     } else {
-                    //         next();
-                    //     }
-
-                    // },
-
                 },
                 {
                     meta: { isAuth: true, title: "消息" },
@@ -75,24 +57,24 @@ const router = new VueRouter({
 
 // 路由守卫
 // 全局前置路由守卫——初始化的时候被调用 和每次路由切换之 {前} 被调用
-// router.beforeEach((to, from, next) => {
-//     // 判断用户想要去的地方是否需要权限校验
-//     if (to.meta.isAuth) {
-//         if (localStorage.getItem('school') === 'atguigu') {
-//             next();
-//         } else {
-//             alert('学校名称不对');
-//             next('/home');
-//         }
-//     } else {
-//         next();
-//     }
+router.beforeEach((to, from, next) => {
+    // 判断用户想要去的地方是否需要权限校验
+    if (to.meta.isAuth) {
+        if (localStorage.getItem('school') === 'atguigu') {
+            next();
+        } else {
+            alert('学校名称不对');
+            next('/home');
+        }
+    } else {
+        next();
+    }
 
-// })
+})
 // 后置路由守卫——初始化的时候被调用 和每次路由切换之 {后} 被调用
-// router.afterEach((to, from) => {
-//     // console.log(to, from);
-//     document.title = to.meta.title || 'VueRunner';
+router.afterEach((to, from) => {
+    // console.log(to, from);
+    document.title = to.meta.title || 'VueRunner';
 
-// })
+})
 export default router;
