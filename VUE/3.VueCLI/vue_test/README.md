@@ -1137,3 +1137,22 @@ module.exports = {
 
     
 
+
+
+## 引入ElementUI
+
+快速上手:https://element.eleme.cn/#/zh-CN/component/quickstart
+
+注意:按需引入中
+
+```js
+presets: [
+		//原先的presets配置项改为了
+    ["@babel/preset-env", { "modules": false }],
+  ],
+```
+
+components.js地址https://github.com/ElemeFE/element/blob/master/components.json
+
+
+
