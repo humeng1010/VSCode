@@ -22,25 +22,18 @@ for (var i = 0; i < arr.length - 1; i++) {//外层循环
 // console.log(arr);
 
 
-function sort(arr) {
-    for (var i = 0; i < arr.length - 1; i++) {
-        for (var j = 0; j < arr.length - i - 1; j++) {
+var sort = function (arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
             if (arr[j] > arr[j + 1]) {
-                var temp = arr[j];
+                let temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
-                // console.log(arr);
             }
-
         }
-
     }
-
-
-}
-
-console.log(sort([3, 4, 1, 2, 8, 7, 9, 5]));
-
-var sort = function (arr) {
+    return arr;
 
 }
+let res = sort([3, 4, 1, 2, 8, 7, 9, 5]);
+console.log(res);
