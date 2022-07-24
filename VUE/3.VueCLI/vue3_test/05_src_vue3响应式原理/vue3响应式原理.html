@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let person = {
+            name: "张三",
+            age: 18
+        }
+        // 模拟vue2的响应式原理
+        //#region
+        /* let p = {}
+        Object.defineProperty(p, "name", {
+            configurable: true,
+            get() {
+                return person.name;
+            },
+            set(value) {
+                console.log("有人修改了name数据了，我要去重新解析模板渲染页面了");
+                person.name = value;
+            }
+        })
+        Object.defineProperty(p, "age", {
+            get() {
+                return person.age;
+            },
+            set(value) {
+                console.log("有人修改了age数据了，我要去重新解析模板渲染页面了");
+                person.age = value;
+            }
+        }) */
+        //#endregion
+
+        // 模拟vue3的响应式原理 Proxy代理 Reflect反射
+        let p = new Proxy(person, {
+            // 有人读取p的某个属性的时候调用
+            /**
+             * @param target 原数据person
+             */
+            get(target, propName) {
+                console.log(`有人读取了p身上的${propName}属性`);
+                // return target.propName 错误写法 原因如下 基础
+                // p是变量 因为propName是形参(变量)，形参直接点相当于在target身上直接找propName
+                // return target[propName]
+                // 通过反射修改原数据
+                return Reflect.get(target, propName)
+            },
+            // 有人 修改 p的某个属性,或给p 追加 某个属性的时候调用
+            set(target, propName, value) {
+                // vue3中在这地方进行了数据劫持
+                console.log(`有人修改了p身上的${propName}属性,我要去更新页面了`);
+                // target[propName] = value;
+                // 通过反射修改原数据
+                Reflect.set(target, propName, value);
+            },
+            // 有人删除某个属性的时候调用这个
+            deleteProperty(target, propName) {
+                // console.log(target, propName);
+                console.log(`有人删除了p身上的${propName}属性，我要去更新页面了`);
+                // return delete target[propName]
+                // 通过反射删除原数据
+                return Reflect.deleteProperty(target, propName);
+            }
+
+        })
+    </script>
+</body>
+
+</html>
