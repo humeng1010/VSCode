@@ -386,6 +386,24 @@ npm run dev
 
 - 扩展：```toRefs``` 与```toRef```功能一致，但可以批量创建多个 ref 对象，语法：```toRefs(person)```
 
+  ```js
+  setup(){
+    	...
+      return {
+        person,
+        // toRef 作用创建一个ref对象 其value值指向另一个对象中的某个属性 要将响应式对象中的某个属性单独提供给外部使用时
+        /* name: toRef(person, "name"),
+        age: toRef(person, "age"),
+        salay: toRef(person.job.j1, "salay"), */
+        // toRefs
+        // 解构赋值 把这个toRefs(person)生成的对象的key和value提取出来
+        ...toRefs(person),
+      };
+  }
+  ```
+
+  
+
 
 # 三、其它 Composition API
 
