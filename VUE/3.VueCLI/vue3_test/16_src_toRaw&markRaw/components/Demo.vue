@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { markRaw, reactive, ref, toRaw, toRefs } from "vue";
+import { computed, markRaw, reactive, ref, toRaw, toRefs } from "vue";
 export default {
   name: "Demo",
   setup() {
@@ -30,6 +30,9 @@ export default {
           salay: 20,
         },
       },
+    });
+    mark = computed(() => {
+      return marked;
     });
     function showRawPerson() {
       // toRaw将响应式reactive的对象转换为普通对象
