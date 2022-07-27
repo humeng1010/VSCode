@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三角形</title>
+    <style>
+        /* 三行css完成三角形 */
+        .triangle1 {
+            width: 0;
+            border-top: 100px solid #333;
+            border-left: 100px solid #fff;
+        }
+
+        .triangle2 {
+            width: 0;
+            border-bottom: 100px solid #fff;
+            border-right: 100px solid #333;
+        }
+
+        /* 箭头向下的三角形 */
+        /* 这个为什么比上面的三角形大?
+            原因由于左边框和右边框是不可重合!!!的中间是有一条明确的分界线的 100px+100px=200px 所以上边框的宽度就被拉长了 为200px
+        */
+        .triangle3 {
+            width: 0;
+            border-top: 100px solid #000;
+            border-left: 100px solid #ddd;
+            border-right: 100px solid #ddd;
+        }
+
+        .t {
+            background: palegoldenrod;
+            width: 100px;
+            height: 100px;
+            border-top: 100px solid #222;
+            border-left: 100px solid #333;
+            border-bottom: 100px solid #666;
+            border-right: 100px solid #888;
+            box-sizing: border-box;
+        }
+
+        .c {
+            height: 100px;
+            width: 100px;
+            border-left: 60px solid red;
+            border-right: 60px solid blue;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="triangle1"></div>
+    <br>
+    <div class="triangle2"></div>
+    <div class="triangle3"></div>
+
+    <div class="t"></div>
+    <div class="c"></div>
+</body>
+
+</html>
