@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+
+        div {
+            height: 200px;
+            /* width: 200px; */
+            background-color: pink;
+        }
+
+        span {
+            background-color: pink;
+        }
+
+        input {
+            width: 249px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        a {
+            /* 转换为块级元素 */
+            display: block;
+            text-decoration: none;
+            width: 300px;
+            height: 40px;
+            background-color: #eee;
+            text-align: center;
+            line-height: 40px;
+            color: #333;
+        }
+
+        a:hover {
+            background-color: orange;
+        }
+
+        .changeInline {
+            /* 转换为行内元素 */
+            display: inline;
+            width: 200px;
+            height: 200px;
+            background-color: #333;
+        }
+
+        strong {
+            display: inline-block;
+            background-color: #6cf;
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>块级元素</h1>
+    <div>我是块级元素，自己独占一行</div>瑟瑟发抖
+
+    <!-- 文字类的元素内不能使用块级元素 -->
+    <p>
+    <div>
+        bbb
+    </div>
+    </p>
+
+    <!-- div块级元素内可以放置文字类的块级元素 -->
+    <div>
+        <p>aaa</p>
+    </div>
+
+    <h1>行内元素</h1>
+    <span>一行可以显示多个</span> <span>宽高直接设置是无效的</span> <span>默认宽度就是他本身内容的宽度</span> <span>行内元素只能容纳文本或其他行内元素</span>
+    <span><span>a链接里面不能再放链接</span></span>
+
+    <h1>行内块元素</h1>
+    <!-- 在一行显示 可以设置宽度高度 img input td -->
+    <input type="text"><input type="text">
+
+    <h1>元素显示模式的转换</h1>
+    <!-- 行内转块 -->
+    <a href="#">手机 电话卡</a>
+    <!-- 块转行内 -->
+    <div class="changeInline">hello</div>
+    <!-- 行内转行内块 -->
+    <strong>hello</strong>
+</body>
+
+</html>
