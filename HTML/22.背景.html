@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            /* background: url(./imgs/bj.jpeg); */
+            /* background-repeat: no-repeat; */
+            /* background-position: center top; */
+            /* 背景图片固定 做视差滚动 */
+            /* background-attachment: fixed; */
+            height: 3000px;
+            /* 复合写法 */
+            /* background: color url() repeat fixed top */
+            background: rgba(0, 0, 0, .3) url(./imgs/bj.jpeg) no-repeat fixed center top;
+
+        }
+
+        div {
+            width: 300px;
+            height: 300px;
+            background: url(./imgs/logo.png);
+            /* 不平铺 */
+            background-repeat: no-repeat;
+            /* 背景颜色 */
+            background-color: pink;
+            /* 背景图片定位 */
+            /* background-position: center right; */
+            /* 另一个不写默认居中 */
+            /* background-position: right; */
+            /* 背景图精确定位写法 x y */
+            /* background-position: 20px 50px; */
+            /* 不写y默认居中 */
+            background-position: 20px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
