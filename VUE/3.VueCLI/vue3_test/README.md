@@ -441,45 +441,52 @@ npm run dev
 
   ```vue
   <template>
-  	<input type="text" v-model="keyword">
-  	<h3>{{keyword}}</h3>
+    <input type="text" v-model="keyword" />
+    <h3>{{ keyword }}</h3>
   </template>
   
   <script>
-  	import {ref,customRef} from 'vue'
-  	export default {
-  		name:'Demo',
-  		setup(){
-  			// let keyword = ref('hello') //使用Vue准备好的内置ref
-  			//自定义一个myRef
-  			function myRef(value,delay){
-  				let timer
-  				//通过customRef去实现自定义
-  				return customRef((track,trigger)=>{
-  					return{
-  						get(){
-  							track() //告诉Vue这个value值是需要被“追踪”的
-  							return value
-  						},
-  						set(newValue){
-  							clearTimeout(timer)
-  							timer = setTimeout(()=>{
-  								value = newValue
-  								trigger() //告诉Vue去更新界面
-  							},delay)
-  						}
-  					}
-  				})
-  			}
-  			let keyword = myRef('hello',500) //使用程序员自定义的ref
-  			return {
-  				keyword
-  			}
-  		}
-  	}
+  import { customRef } from "vue";
+  export default {
+    name: "App",
+    setup() {
+      // 自定义一个ref
+      function myRef(value, delay) {
+        let timer;
+        // console.log("---myRef---", value);
+        return customRef((track, trigger) => {
+          return {
+            get() {
+              console.log(`有人获取了${value}`);
+              // 通知vue追踪value的变化
+              track();
+              return value;
+            },
+            set(newValue) {
+              console.log(`有人修改了${newValue}`);
+              clearTimeout(timer);
+              timer = setTimeout(() => {
+                value = newValue;
+                // 触发 通知vue重新解析模板
+                trigger();
+              }, delay);
+            },
+          };
+        });
+      }
+      // let keyword = ref("hello"); //使用vue提供的ref
+      let keyword = myRef("hello", 500); //使用程序员自定义的ref
+  
+      return {
+        keyword,
+      };
+    },
+  };
   </script>
+  
+  
   ```
-
+  
   
 
 ## 5.provide 与 inject
